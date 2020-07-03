@@ -1,0 +1,106 @@
+html{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-style: sans-serif;
+}
+body{
+    width: 100%;
+    height: 100%;
+    font-family: 'Open Sans',sans-serif;
+    margin:0;
+    background-color: white;
+}
+#login{
+    position: relative;
+    top: 20%;
+    left:50%;
+    margin: -100px 0 0 -150px;
+    width: 300px;
+    height: 300px;
+}
+#login h1{
+    color: #0c80ba;
+
+    letter-spacing: 1px;
+    text-align: center;
+}
+h1{
+    font-size: 2em;
+    margin: 0.67em 0;
+    align-content: center;
+}
+#register h2{
+    color: #0c80ba;
+
+    letter-spacing: 1px;
+    text-align: center;
+
+}
+h2{
+    font-size: 2em;
+    margin: 0.67em 0;
+    align-content: center;
+}
+
+input{
+    width: 278px;
+    height: 40px;
+    margin-bottom: 10px;
+    outline: none;
+    padding: 10px;
+    font-size: 13px;
+    color: black;
+
+    border-top: 1px solid #0f9ae0;
+    border-left: 1px solid #0f9ae0;
+    border-right: 1px solid #0f9ae0;
+    border-bottom: 1px solid #0f9ae0;
+    border-radius: 6px;
+    background-color: white;
+}
+.but {
+    width: 275px;
+    min-height: 20px;
+    display: block;
+    background-color: #4a77d4;
+    border: 1px solid #3762bc;
+    color: #fff;
+    padding: 9px 14px;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
+}
+.but1{
+    width: 275px;
+    min-height: 20px;
+    display: block;
+    background-color: #90EE90;
+    border: 1px solid white;
+    color: #fff;
+    padding: 9px 14px;
+    font-size: 15px;
+    line-height: normal;
+    border-radius: 5px;
+    margin: 0;
+}
+#card1{
+    width: 480px;
+
+    height: 500px;
+    background-image: linear-gradient(-225deg, #E3FDF5 0%, #FFE6FA 100%);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 20%;
+}
+#card2{
+
+    background-color: white;
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 5%;
+}

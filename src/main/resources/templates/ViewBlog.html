@@ -20,7 +20,7 @@
 <body style="height: 100%; background: #F5F5F5">
 
 <!--顶部导航栏-->
-<nav class="navbar navbar-expand-lg navbar-light" style="background:#DEEFDD">
+<nav class="navbar navbar-expand-lg navbar-light" id="top" style="background:#DEEFDD">
     <a class="navbar-brand" href="index.html">LittleLittle BigBlog</a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             class="navbar-toggler"
@@ -60,6 +60,20 @@
     </div>
 </nav>
 
+<!--回到顶部-->
+<a href="#top">
+    <div style="box-shadow: 3px 4px 4px rgba(10,16,20,0.24),0 0 8px rgba(10,16,20,0.12);text-decoration: none;border-radius: 50%;background: #A79EAF;width: 3.5rem; height: 3.5rem; bottom: 4rem;right: 9rem; position: fixed; text-align: center">
+        <img src="..\static\img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
+    </div>
+</a>
+
+<!--发表博客-->
+<a href="">
+    <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
+        <img src="..\static\img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
+    </div>
+</a>
+
 <!--左边主div（标题，博客，评论）-->
 <div id="left_frame">
 <!--    blog部分-->
@@ -86,14 +100,14 @@
                         </p>
 
                         <img alt="Card image" class="card-img-bottom"
-                             src="https://static.runoob.com/images/mix/img_avatar.png" style="width: 60%; height:30% ">
+                             src="..\static\img\ViewBlog\lgm.jpg" style="width: 60%; height:30% ">
                     </div>
                 </li>
                 <!--点赞，阅读量，评论数-->
                 <li class="list-group-item">
                                 <div id="xh" style="margin: 2%">
-                                    <svg width="1.5rem" height="1.5rem" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path fill-rule="evenodd" d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                                    <svg class="bi bi-heart" fill="currentColor" height="1.5rem" viewBox="0 0 16 16" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" fill-rule="evenodd"/>
                                     </svg>
                                     <div id="likes" style="display: inline;">
                                         30
@@ -101,8 +115,8 @@
                                     <p style="display: inline;font-size: 14px">喜欢</p>
                                 </div>
                             <div id="cai" style="margin: 2%">
-                                <svg width="1.5rem" height="1.5rem" viewBox="0 0 16 16" class="bi bi-chat-left-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                <svg class="bi bi-chat-left-dots" fill="currentColor" height="1.5rem" viewBox="0 0 16 16" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" fill-rule="evenodd"/>
                                     <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                                 </svg>
                                 <div id="commentCount;" style="display: inline">
@@ -111,9 +125,9 @@
                                 <p style="display: inline;font-size: 14px">评论数</p>
                             </div>
                             <div id="can" style="margin: 2%">
-                                <svg width="2rem" height="2rem" viewBox="0 0 16 16" class="bi bi-eye" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z"/>
-                                    <path fill-rule="evenodd" d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                                <svg class="bi bi-eye" fill="currentColor" height="2rem" viewBox="0 0 16 16" width="2rem" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z" fill-rule="evenodd"/>
+                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" fill-rule="evenodd"/>
                                 </svg>
                                 <div id="pageviews" style="display: inline;">
                                     30
@@ -126,20 +140,19 @@
                 </p>
             </ul>
     </div>
-
-<!--    评论部分-->
+    <!--评论部分-->
     <div style="margin-top: 3rem">
         <div class="card" style=" border-radius :0.5rem; top: 3%; width: 100%; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
 
 
                 <ul class="list-group list-group-flush">
-<!--                    评论一-->
+                    <!--评论一-->
                     <li class="list-group-item" >
                         <div class="card border-light mb-3">
-<!--                            评论头像-->
+                            <!--评论头像-->
                             <div class="card-header">
                                 <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
-                                    <img alt="..." src="..\static\img\stwb.png" style="border-radius :50%; width: 2rem;height: 2rem">
+                                    <img alt="..." src="..\static\img\ViewBlog\stwb.png" style="border-radius :50%; width: 2rem;height: 2rem">
                                 </div>
                                 <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
                                     <p style="display: inline; font-size: 14px">黑虎阿福</p>
@@ -148,14 +161,14 @@
                                     <p style="display: inline; font-size: 14px;opacity: 0.5 ">回答于 2018-04-02</p>
                                 </div>
                             </div>
-<!--                            评论-->
+                            <!-- 评论-->
                             <div class="card-body">
                                 <p class="card-text" style="text-indent: 2rem;">
                                     黑虎掏心，泰山压顶，二龙戏珠，螳螂拳,蛇形步，莲花飘，蝎子掌，弗拉明戈舞步，飞天捶 ,
                                     猫落地，熊掌出击，猫抖水，猫转身，飞鹤捕虾，猩猩折枝，兔子拳，骡子踢腿，龙虾爪
                                 </p>
                             </div>
-<!--                            点赞-->
+                            <!--点赞-->
                             <div class="card-footer">
                                 <div id="zan" style="display:inline;">
                                     <svg class="bi bi-hand-thumbs-up" fill="currentColor" height="1.5em" viewBox="0 0 16 16" width="1.5em" xmlns="http://www.w3.org/2000/svg">
@@ -165,28 +178,33 @@
                                         30
                                     </div>
                                 </div>
-<!--                                回复-->
+                                <!--回复-->
                                     <div  id="Additional_comments" style="display:inline; margin-left: 3rem; user-select: none; cursor: pointer;">
-                                        <svg width="1.5rem" height="1.5rem" viewBox="0 0 16 16" class="bi bi-chat-left-text" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                                            <path fill-rule="evenodd" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/>
+                                        <svg class="bi bi-chat-left-text" fill="currentColor" height="1.5rem" viewBox="0 0 16 16" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" fill-rule="evenodd"/>
+                                            <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" fill-rule="evenodd"/>
                                         </svg>
                                         <p style="display: inline; font-size: 14px">回复</p>
                                     </div>
+
                                 <div id="Fill_comments" style=" display: none;width:100%;margin-top: 2rem">
                                     <div class="input-group mb-3">
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon2">
+                                        <input aria-describedby="basic-addon2" aria-label="" class="form-control" placeholder="" type="text">
                                         <div class="input-group-append">
-                                            <span class="input-group-text" id="basic-addon2">回复</span>
+                                            <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
+                                            回复
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
                     </li>
 
 
-<!--发表评论-->
+                    <!--发表评论-->
                     <li class="list-group-item">
                         <div class="form-group">
                             <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
@@ -196,10 +214,12 @@
                                 <p style="display: inline; font-size: 14px">嘤嘤怪</p>
                             </div>
                             <label for="comment"></label>
-                            <textarea  style="margin-top: 1rem" class="form-control" id="comment" rows="3"></textarea>
+                            <textarea  class="form-control" id="comment" rows="3" style="margin-top: 1rem"></textarea>
                         </div>
                         <div style="width: 100%; text-align: right">
-                            <button type="submit" style="background: #DEEFDD" class="btn  mb-2">发表评论</button>
+                            <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
+                                发表评论
+                            </button>
                         </div>
                     </li>
                     <p>
@@ -214,16 +234,17 @@
     </div>
 </div>
 
+
 <!--右边div（相关推荐）-->
 <div id="right_frame">
     <div class="card" style="top: 3%; width: 100%;  border-radius :0.5rem; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
         <div class="card-body">
             <h4 class="card-title">相关推荐</h4>
-<!--            推荐一-->
+            <!--推荐一-->
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img alt="..."  class="card-img" src="..\static\img\peiqi.jpg" style="height: 100%">
+                        <img alt="..."  class="card-img" src="..\static\img\ViewBlog\peiqi.jpg" style="height: 100%">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
