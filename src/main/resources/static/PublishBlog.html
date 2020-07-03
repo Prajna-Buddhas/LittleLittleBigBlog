@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>发布博客</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+</head>
+<body style="background: #F5F5F5">
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #BEDEC9" >
+    <a class="navbar-brand" href="index.html">LittleLittle BigBlog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" >主页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    标签
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">美食</a>
+                    <a class="dropdown-item" href="#">电影</a>
+                    <a class="dropdown-item" href="#">游戏</a>
+                    <a class="dropdown-item" href="#">音乐</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+        <img src="img/default.png" style="height: 40px;width: 40px" class="rounded-circle ">
+        <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
+        <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>
+    </div>
+</nav>
+
+<div class="card" style="margin: 2% 10% 10%;padding: 5%">
+    <h1 style="color: rgba(0,20,5,0.68)">发布</h1>
+    <form>
+        <ul class="list-group" style="list-style: none">
+            <li ><div><label>
+                <input id="title" type="text" name="title" class="form-control" placeholder="请输入标题">
+            </label></div></li>
+            <li >
+                <div><label>
+                <textarea id="content" class="form-control" style="width: 100%;overflow: auto;
+        word-break: break-all;" cols="70" rows="10" placeholder="在此编辑您的博客"></textarea>
+                </label>
+                </div></li><li>
+            选择分区
+        </li>
+            <li><div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="1" checked> 美食
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="2"> 电影
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="3"> 音乐
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="4"> 游戏
+                </label>
+            </div></li>
+            <li>
+                <div class="div_model">
+                    <img id="cropedBigImg0" style="width: 10rem;height: 10rem" src="img/publish/upload.jpg" class="div_model_img"/>
+                </div>
+            </li><br>
+            <li>
+                <input type="file"class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg"id="chooseImage0">
+            </li><br>
+            <li>
+                <div id="alert" style="display: none" class="alert alert-danger" role="alert">
+                    请填写完所有内容！
+                </div>
+            </li><br>
+            <li><button type="button" id="submit" class="btn btn-info">发表</button></li>
+        </ul>
+    </form>
+</div>
+<script>
+    //图片上传到浏览器并显示
+    function ProcessFile(e) {
+        const reader = new FileReader();
+        const file = document.getElementById('chooseImage0').files[0];
+        console.log(file);
+        if (file) {
+            reader.onload = function (event) {
+                const txt = event.target.result;
+                $("#cropedBigImg0").attr('src', txt);//将图片base64字符串赋值给img的src
+                //console.log(txt)//base64
+            };
+        }
+        reader.readAsDataURL(file);
+    }
+
+    function contentLoaded() {
+        document.getElementById('chooseImage0').addEventListener('change',
+            ProcessFile, false);
+    }
+
+    // var model=document.getElementById('model');
+    // var input=model.querySelectorAll('input');
+    window.addEventListener("DOMContentLoaded", contentLoaded, false);
+
+
+    $("#submit").click(function () {
+        const title = $("#title").val();
+        const content = $("#content").val();
+        const tagId = $("input:radio:checked").val();
+        if ( title === "" || content === ""){
+            $("#alert").css("display", "block");
+        } else {
+            $("#alert").alert('close');
+
+        }
+    })
+</script>
+</body>
+
+</html>
