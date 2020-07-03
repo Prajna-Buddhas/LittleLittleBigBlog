@@ -11,7 +11,7 @@ import lombok.NonNull;
  */
 
 @Data
-public class tag {
+public class Tag {
 
     private String tagId;
 
