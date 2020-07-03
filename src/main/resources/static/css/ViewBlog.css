@@ -1,0 +1,47 @@
+
+/*左边主div（标题，博客，评论）*/
+#left_frame
+{
+    position: absolute;
+    left: 10%;
+    width: 50%;
+}
+
+/*博客图片*/
+#blog_img
+{
+    position: relative;
+    /*text-align: center;*/
+    top: 10%;
+    width:80%;
+    height: 50%;
+}
+/*右边div（相关推荐）*/
+#right_frame
+{
+    position: absolute;
+    left: 70%;
+    width: 20%;
+
+}
+
+/*点赞，阅读量，评论数*/
+#zan, #cai ,#can,#xh{
+    display: inline;
+    justify-content: space-between;
+    border-radius: 6px;
+    user-select: none;
+    cursor: pointer;
+}
+
+#zan img, #cai img,#can img,#xh img {
+    width: 14px;
+    height: 14px;
+    margin: 5px 5px 0 5px;
+}
+
+#zan #num1, #cai #num2 ,#can #num3,#xh #num4{
+    line-height: 22px;
+    margin-right: 3px;
+}
+
