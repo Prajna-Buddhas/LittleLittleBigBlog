@@ -5,6 +5,7 @@ import lombok.NonNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * 评论封装类
@@ -18,10 +19,8 @@ public class Comment {
 
     private Integer commentId;
 
-    @NonNull
     private Integer userId;
 
-    @NonNull
     private String commentContent;
 
     private Integer commentLikes;
@@ -31,7 +30,7 @@ public class Comment {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date commentDate;
 
-    @NonNull
     private Integer blogId;
 
+    private List<Comment> subComments;
 }

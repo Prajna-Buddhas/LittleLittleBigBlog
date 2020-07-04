@@ -4,6 +4,7 @@ import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Blog表封装类
@@ -46,4 +47,5 @@ public class Blog {
     //blogPhotoId
     private String blogPhoto;
 
+    private List<Comment> comments;
 }

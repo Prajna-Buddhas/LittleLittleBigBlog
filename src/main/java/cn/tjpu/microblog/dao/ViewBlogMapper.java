@@ -35,22 +35,23 @@ public interface ViewBlogMapper {
     @Update("")
     Integer reduceLike(Blog blog);
 
-    //todo 查询当前博客id下的所有评论id，再通过评论id查询出所有评论
-    @Select("")
-    List<Comment> getComments(Blog blog);
+    // 通过blogId查询所有评论
+    @Select("SELECT * FROM microblog_comment WHERE blog_id = #{blogId}")
+    List<Comment> findCommentById(Comment comment);
 
-    //todo 发表评论
-    @Insert("")
+    // 发表评论
+    @Insert("INSERT INTO microblog_comment (user_id, comment_content, blog_id)VALUES(#{userId}, #{commentContent}, #{blogId})")
     Integer publishComment(Comment comment);
 
-    //todo 相关推荐，查询相同tagId下的前8条数据
+    // 相关推荐，查询相同tagId下的前8条数据
+    @Select("SELECT * FROM microblog_blog WHERE tag_Id=#{tagId} LIMIT 8")
     List<Blog> recommend(Blog blog);
 
-    //todo 评论点赞
-    @Update("")
-    Integer addCommentLike();
+    //评论点赞
+    @Update("UPDATE microblog_comment SET comment_likes=#{commentLikes} WHERE comment_id=#{commentId}")
+    Integer addCommentLike(Comment comment);
 
-    //todo 回复评论(发表子评论)
-    @Insert("")
+    // 回复评论(发表子评论)
+    @Insert("INSERT INTO microblog_comment (user_id, comment_content, parent_comment_id, blog_id)VALUES(#{userId}, #{commentContent}, #{parentCommentId}, #{blogId})")
     Integer addSubComment(Comment comment);
 }
