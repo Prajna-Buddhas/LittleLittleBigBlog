@@ -25,7 +25,7 @@ public class Comment {
 
     private Integer commentLikes;
 
-    private String parentCommentId;
+    private Integer parentCommentId;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date commentDate;

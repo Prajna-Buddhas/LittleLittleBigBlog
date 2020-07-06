@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @since 2020/7/3
  */
 
+@Repository
 @Mapper
 public interface ViewBlogMapper {
 
@@ -40,7 +42,7 @@ public interface ViewBlogMapper {
     List<Comment> findCommentById(Comment comment);
 
     // 发表评论
-    @Insert("INSERT INTO microblog_comment (user_id, comment_content, blog_id)VALUES(#{userId}, #{commentContent}, #{blogId})")
+    @Insert("INSERT INTO microblog_comment (user_id, comment_content,comment_likes, blog_id)VALUES(#{userId}, #{commentContent},0, #{blogId})")
     Integer publishComment(Comment comment);
 
     // 相关推荐，查询相同tagId下的前8条数据
@@ -48,10 +50,10 @@ public interface ViewBlogMapper {
     List<Blog> recommend(Blog blog);
 
     //评论点赞
-    @Update("UPDATE microblog_comment SET comment_likes=#{commentLikes} WHERE comment_id=#{commentId}")
+    @Update("UPDATE microblog_comment SET comment_likes=comment_likes+1 WHERE comment_id=#{commentId}")
     Integer addCommentLike(Comment comment);
 
     // 回复评论(发表子评论)
-    @Insert("INSERT INTO microblog_comment (user_id, comment_content, parent_comment_id, blog_id)VALUES(#{userId}, #{commentContent}, #{parentCommentId}, #{blogId})")
+    @Insert("INSERT INTO microblog_comment (user_id, comment_content, parent_comment_id,comment_likes, blog_id)VALUES(#{userId}, #{commentContent}, #{parentCommentId},0, #{blogId})")
     Integer addSubComment(Comment comment);
 }
