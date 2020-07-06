@@ -14,8 +14,8 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface RegisterMapper {
-
     //todo 向microblog_user表插入user
-    @Insert("")
+    @Insert("INSERT INTO microblog_user (username,`password`,birthday,nickname,email,avatar_id) " +
+            "VALUES (#{username},#{password},#{birthday},#{nickname},#{email},#{avatarId});")
     Integer registerUser(User user);
 }

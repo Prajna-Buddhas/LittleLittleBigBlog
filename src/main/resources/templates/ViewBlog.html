@@ -63,14 +63,14 @@
 <!--回到顶部-->
 <a href="#top">
     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,0.24),0 0 8px rgba(10,16,20,0.12);text-decoration: none;border-radius: 50%;background: #A79EAF;width: 3.5rem; height: 3.5rem; bottom: 4rem;right: 9rem; position: fixed; text-align: center">
-        <img src="..\static\img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
+        <img src="..\static\img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="">
     </div>
 </a>
 
 <!--发表博客-->
 <a href="">
     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
-        <img src="..\static\img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
+        <img src="..\static\img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="">
     </div>
 </a>
 
@@ -261,9 +261,9 @@
 <script>
 
 
-    var Additional_comments = document.getElementById('Additional_comments');
-    var Fill_comments = document.getElementById('Fill_comments');
-    var flag3 = 0;
+    const Additional_comments = document.getElementById('Additional_comments');
+    const Fill_comments = document.getElementById('Fill_comments');
+    let flag3 = 0;
     Additional_comments.onclick = function() {
         if (flag3 === 0) {
             Fill_comments.style.display = "block";
@@ -279,11 +279,9 @@
     }
 
 
-
-
-    var xh = document.getElementById('xh');
-    var likes = document.getElementById('likes');
-    var flag1 = 0;
+    const xh = document.getElementById('xh');
+    const likes = document.getElementById('likes');
+    let flag1 = 0;
     xh.onclick = function () {
         if (flag1 === 0) {
             likes.innerHTML++;
@@ -298,9 +296,9 @@
         flag1++;
     }
 
-    var zan = document.getElementById('zan');
-    var commentlikes = document.getElementById('commentlikes');
-    var flag2 = 0;
+    const zan = document.getElementById('zan');
+    const commentlikes = document.getElementById('commentlikes');
+    let flag2 = 0;
     zan.onclick = function () {
         if (flag2 === 0) {
             commentlikes.innerHTML++;
