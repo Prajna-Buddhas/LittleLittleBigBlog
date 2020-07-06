@@ -21,6 +21,31 @@ public class ViewBlogMapperTest {
 
     @Autowired
     ViewBlogMapper viewBlogMapper;
+    @Test
+    public void getLikes(){
+        Blog blog=new Blog();
+        blog.setBlogId(1);
+        assert viewBlogMapper.getLikes(blog)==1;
+    }
+    @Test
+    public void getPageView(){
+        Blog blog=new Blog();
+        blog.setBlogId(1);
+        assert viewBlogMapper.getPageView(blog)==1;
+    }
+    @Test
+    public void addLike(){
+        Blog blog=new Blog();
+        blog.setBlogId(1);
+        assert viewBlogMapper.addLike(blog)==1;
+    }
+    @Test
+    public void reduceLike(){
+        Blog blog=new Blog();
+        blog.setBlogId(1);
+        assert viewBlogMapper.reduceLike(blog)==1;
+    }
+
 
     @Test
     public void findCommentByIdTest() {
