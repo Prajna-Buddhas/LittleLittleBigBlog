@@ -13,7 +13,7 @@ import lombok.NonNull;
 @Data
 public class Tag {
 
-    private String tagId;
+    private Integer tagId;
 
     private String tagName;
 
