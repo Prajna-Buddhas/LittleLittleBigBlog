@@ -20,11 +20,11 @@ import java.util.List;
 public interface IndexMapper {
 
     //todo 查询所有tag，轮播图
-    @Select("")
+    @Select("SELECT tag_name FROM microblog")
     List<Tag> getRotationChart();
 
     //todo 首页推荐，查看最新发布的10条博客
-    @Select("")
+    @Select("SELECT title,content,release_date,blog_photo FROM microblog_blog ORDER BY release_date DESC LIMIT 10")
     List<Blog> getIndexRecommend();
 
 }
