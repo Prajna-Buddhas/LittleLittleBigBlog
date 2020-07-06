@@ -20,10 +20,10 @@ import java.util.List;
 public interface TagMapper {
 
     //todo 查询当前tag信息
-    @Select("")
+    @Select("SELECT * FROM microblog_tag WHERE tag_id = #{tagId};")
     List<Tag> getTagDescription(Tag tag);
 
     //todo 查询当前tag下所有blog
-    @Select("")
-    List<Blog> getBlogsByTagId(Tag tag);
+    @Select("SELECT title,content,release_date,blog_photo FROM microblog_blog WHERE tag_id = #{tagId}")
+    List<Blog> getBlogsByTagId(Blog blog);
 }
