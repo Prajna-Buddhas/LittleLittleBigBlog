@@ -21,20 +21,20 @@ import java.util.List;
 @Mapper
 public interface ViewBlogMapper {
 
-    // 查询浏览量
-    @Select("SELECT pageviews FROM microblog_blog WHERE blog_id=#{blogId} ")
+    //todo 查询浏览量
+    @Select("")
     Integer getPageView(Blog blog);
 
-    // 查询点赞数
-    @Select("SELECT likes FROM microblog_blog WHERE blog_id=#{blogId} ")
+    //todo 查询点赞数
+    @Select("")
     Integer getLikes(Blog blog);
 
-    // 点赞功能，点赞数+1
-    @Update("UPDATE microblog_blog SET likes =likes +1 WHERE blog_id=#{blogId}")
+    //todo 点赞功能，点赞数+1
+    @Update("")
     Integer addLike(Blog blog);
 
-    // 点赞功能，点赞数-1
-    @Update("UPDATE microblog_blog SET likes =likes -1 WHERE blog_id=#{blogId}")
+    //todo 点赞功能，点赞数-1
+    @Update("")
     Integer reduceLike(Blog blog);
 
     // 通过blogId查询所有评论
