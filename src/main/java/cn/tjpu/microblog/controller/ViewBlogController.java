@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -37,8 +38,15 @@ public class ViewBlogController {
 
     @ResponseBody
     @RequestMapping("/blog/{id}/comments")
-    public List<Comment> getComments(@PathVariable("id") Integer blogId) {
-        return service.getComments(blogId);
+    public List<Map<String,Object>> getComments(@PathVariable("id") Integer blogId) {
+        List<Map<String, Object>> maps = new ArrayList<>();
+        List<Comment> comments = service.getComments(blogId);
+        for (Comment comment : comments) {
+            Map<String, Object> commentMap = service.commentConstructor(comment);
+            maps.add(commentMap);
+        }
+
+        return maps;
     }
 
     @ResponseBody

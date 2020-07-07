@@ -37,6 +37,9 @@ public interface ViewBlogMapper {
     @Update("")
     Integer reduceLike(Blog blog);
 
+    @Select("SELECT username FROM microblog_user WHERE user_id = #{userId}")
+    String getUsernameByComment(Integer userId);
+
     @Select("SELECT username FROM microblog_user WHERE user_id = #{authorId}")
     String getAuthorName(Integer authorId);
 
@@ -51,8 +54,11 @@ public interface ViewBlogMapper {
     @Insert("INSERT INTO microblog_comment (user_id, comment_content,comment_likes, blog_id)VALUES(#{userId}, #{commentContent},0, #{blogId})")
     Integer publishComment(Comment comment);
 
+    @Select("SELECT tag_id FROM microblog_blog WHERE blog_id = #{blogId}")
+    String getTagNameByBlogId(Integer blogId);
+
     // 相关推荐，查询相同tagId下的前8条数据
-    @Select("SELECT * FROM microblog_blog WHERE tag_Id=#{tagId} LIMIT 8")
+    @Select("SELECT * FROM microblog_blog WHERE tag_id=#{tagId} LIMIT 8")
     List<Blog> recommend(Blog blog);
 
     //评论点赞
