@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
-import java.util.zip.ZipEntry;
 
 /**
  * 浏览博客界面映射测试
@@ -17,7 +16,7 @@ import java.util.zip.ZipEntry;
  */
 
 @SpringBootTest
-public class ViewBlogMapperTest {
+public class ViewBlogServiceTest {
 
     @Autowired
     ViewBlogMapper viewBlogMapper;
@@ -65,4 +64,9 @@ public class ViewBlogMapperTest {
         assert viewBlogMapper.addSubComment(comment) == 1;
     }
 
+    @Test
+    public void getBlogTest() {
+        List<Blog> blogs = viewBlogMapper.getBlog(2);
+        assert blogs.get(0).getTitle().equals("品相");
+    }
 }

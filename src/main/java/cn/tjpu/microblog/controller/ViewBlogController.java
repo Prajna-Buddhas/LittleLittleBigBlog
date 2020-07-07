@@ -1,0 +1,51 @@
+package cn.tjpu.microblog.controller;
+
+import cn.tjpu.microblog.domain.Blog;
+import cn.tjpu.microblog.domain.Comment;
+import cn.tjpu.microblog.domain.User;
+import cn.tjpu.microblog.service.ViewBlogService;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
+
+/**
+ * ViewBlogController
+ *
+ * @author Trey
+ * @since 2020/7/6
+ */
+
+@Controller
+public class ViewBlogController {
+
+    @Resource
+    ViewBlogService service;
+
+    @GetMapping("/blog/{id}")
+    public ModelAndView ViewBlog(@PathVariable("id") Integer blogId, ModelAndView modelAndView) {
+        modelAndView.setViewName("ViewBlog");
+        Blog blog = service.getBlog(blogId);
+        String author = service.getAuthorName(blogId);
+        modelAndView.addObject("blog", blog);
+        modelAndView.addObject("author", author);
+        return modelAndView;
+    }
+
+    @ResponseBody
+    @RequestMapping("/blog/{id}/comments")
+    public List<Comment> getComments(@PathVariable("id") Integer blogId) {
+        return service.getComments(blogId);
+    }
+
+    @ResponseBody
+    @RequestMapping("/blog/{id}/recommend")
+    public List<Blog> getRecommend(@PathVariable("id") Integer blogId) {
+        Blog blog = new Blog();
+        blog.setBlogId(blogId);
+        return service.getRecommend(blog);
+    }
+}

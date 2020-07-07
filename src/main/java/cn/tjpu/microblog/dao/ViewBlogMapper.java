@@ -25,17 +25,23 @@ public interface ViewBlogMapper {
     @Select("")
     Integer getPageView(Blog blog);
 
-    //todo 查询点赞数
+    // 查询点赞数
     @Select("")
     Integer getLikes(Blog blog);
 
-    //todo 点赞功能，点赞数+1
+    // 点赞功能，点赞数+1
     @Update("")
     Integer addLike(Blog blog);
 
-    //todo 点赞功能，点赞数-1
+    // 点赞功能，点赞数-1
     @Update("")
     Integer reduceLike(Blog blog);
+
+    @Select("SELECT username FROM microblog_user WHERE user_id = #{authorId}")
+    String getAuthorName(Integer authorId);
+
+    @Select("SELECT * FROM microblog_blog WHERE blog_id = #{blogId}")
+    List<Blog> getBlog(Integer blogId);
 
     // 通过blogId查询所有评论
     @Select("SELECT * FROM microblog_comment WHERE blog_id = #{blogId}")

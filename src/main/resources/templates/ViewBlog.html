@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
 <head>
     <meta charset="UTF-8">
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css"
@@ -13,9 +15,9 @@
     <script crossorigin="anonymous"
             integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
             src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-    <link href="../static/css/ViewBlog.css" rel="stylesheet" type="text/css">
+    <link href="/css/ViewBlog.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
-    <title>ViewBlog</title>
+    <title th:text="${blog.title}">loading</title>
 </head>
 <body style="height: 100%; background: #F5F5F5">
 
@@ -31,7 +33,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#">主页 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html">主页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
                 <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
@@ -53,179 +55,168 @@
                 </form>
             </li>
         </ul>
-        <img alt="Head portrait" class="rounded-circle " src="..\static\img\default.png"
+        <img alt="Head portrait" class="rounded-circle " src="/img/default.png"
              style="height: 40px;width: 40px">
-        <a class="nav-link navbar-text" href="#">登录<span class="sr-only">(current)</span></a>/
-        <a class="nav-link navbar-text" href="#">注册<span class="sr-only">(current)</span></a>
+        <a class="nav-link navbar-text" href="login.html">登录<span class="sr-only">(current)</span></a>/
+        <a class="nav-link navbar-text" href="register.html">注册<span class="sr-only">(current)</span></a>
     </div>
 </nav>
 
 <!--回到顶部-->
 <a href="#top">
     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,0.24),0 0 8px rgba(10,16,20,0.12);text-decoration: none;border-radius: 50%;background: #A79EAF;width: 3.5rem; height: 3.5rem; bottom: 4rem;right: 9rem; position: fixed; text-align: center">
-        <img src="..\static\img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
+        <img src="/img/ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
     </div>
 </a>
 
 <!--发表博客-->
 <a href="">
     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
-        <img src="..\static\img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
+        <img src="/img/publish.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="...">
     </div>
 </a>
 
 <!--左边主div（标题，博客，评论）-->
 <div id="left_frame">
-<!--    blog部分-->
-    <div class="card" style="border-radius :0.5rem;top: 3%; width: 100%; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
+    <!--    blog部分-->
+    <div class="card"
+         style="border-radius :0.5rem;top: 3%; width: 100%; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
+        <ul class="list-group list-group-flush">
+            <!--微博内容-->
+            <li class="list-group-item">
+                <div class="card-body" style="width: 100%; height: 100%">
+                    <div style="top: 10%;height: 10%">
+                        <!-- 补充标题-->
+                        <h4 th:text="${blog.title}">loading...</h4>
+                    </div>
+                    <br>
+                    <!-- 用户 发布时间-->
+                    <!--/*@thymesVar id="commentDate" type="java.util.Date"*/-->
+                    <p class="card-text" style="height: 8%" th:text="${author}+'  '+${#dates.format(blog.releaseDate,'yyyy-MM-dd')}">loading...</p>
+                    <br>
+                    <br>
+                    <!-- 正文 -->
+                    <p th:text="${blog.content}" class="card-text" style="height: 20%">
+                        now loading...
+
+                    </p>
+                    <!--正文图片-->
+                    <img alt="Card image" class="card-img-bottom"
+                         src="/img/ViewBlog/lgm.jpg" style="width: 60%; height:30% ">
+                </div>
+            </li>
+            <!--点赞，阅读量，评论数-->
+        </ul>
+    </div>
+
+    <li class="list-group-item">
+        <div class="like" style="margin: 2% ;color: #909396">
+            <span class="fa fa-heart-o" ></span>
+            <!-- 点赞数 -->
+            <div th:text="${blog.likes}" class="likes" style="display: inline;">
+                30
+            </div>
+        </div>
+        <div style="margin: 2%;color: #909396">
+            <span class="fa fa-commenting-o"></span>
+            <!-- 评论数 -->
+            <div th:text="${blog.commentCount}" id="commentCount;" style="display: inline">
+                30
+            </div>
+        </div>
+        <div id="can" style="margin: 2%;color: #909396">
+            <span class="fa fa-eye" ></span>
+            <!-- 浏览量-->
+            <div th:text="${blog.pageviews}" id="pageviews" style="display: inline;">
+                30
+            </div>
+        </div>
+    </li>
+    <p>
+        <br>
+    </p>
+
+<!--评论部分-->
+    <div style="margin-top: 3rem">
+        <div class="card" style=" border-radius :0.5rem; top: 3%; width: 100%; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
+
+
             <ul class="list-group list-group-flush">
-                <!--微博内容-->
-                <li class="list-group-item">
-                    <div class="card-body" style="width: 100%; height: 100%">
-                        <div style="top: 10%;height: 10%">
-                            <h4>贵阳警方通报后 腾讯发动态：今天中午的辣椒酱突然不香了</h4>
+                <!--评论一-->
+                <li class="list-group-item" >
+                    <div class="card border-light mb-3">
+                        <!--评论头像-->
+                        <div class="card-header">
+                            <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
+                                <img alt="..." src="..\static\img\ViewBlog\stwb.png" style="border-radius :50%; width: 2rem;height: 2rem">
+                            </div>
+                            <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
+                                <p style="display: inline; font-size: 14px">黑虎阿福</p>
+                            </div>
+                            <div style="display: inline; margin-left: 22rem;width: 2rem;height: 2rem">
+                                <p style="display: inline; font-size: 14px;opacity: 0.5 ">回答于 2018-04-02</p>
+                            </div>
                         </div>
-                        <br>
-                        <p class="card-text" style="height: 8%">新浪科技 发布时间：07-0114:38</p>
-                        <br>
-                        <br>
-                        <p  class="card-text" style="height: 20%">
-                            贵阳警方：3人伪造老干妈印章与腾讯签合同
-                            老干妈发布声明：从未与腾讯公司进行过任何商业合作
-                            腾讯：被长期拖欠千万元广告费 故申请冻结老干妈1624万财产
-                            新浪科技讯 7月1日下午消息，腾讯状告老干妈拖欠广告费，老干妈称腾讯遭遇诈骗一事有了最新进展。贵阳警方通报，
-                            3人伪造老干妈印章与腾讯签订合同，已被刑拘。
-                            在事件迎来反转后，腾讯官方B站账号发表动态称，“今天中午的辣椒酱突然不香了”
+                        <!-- 评论-->
+                        <div class="card-body">
+                            <p class="card-text" style="text-indent: 2rem;">
+                                黑虎掏心，泰山压顶，二龙戏珠，螳螂拳,蛇形步，莲花飘，蝎子掌，弗拉明戈舞步，飞天捶 ,
+                                猫落地，熊掌出击，猫抖水，猫转身，飞鹤捕虾，猩猩折枝，兔子拳，骡子踢腿，龙虾爪
+                            </p>
+                        </div>
+                        <!--点赞-->
+                        <div class="card-footer">
+                            <div class="like" style="display:inline;color: #909396">
+                                <span class="fa fa-heart-o" ></span>
+                                <div class="likes" style="display: inline;">
+                                    30
+                                </div>
+                            </div>
+                            <!--回复-->
+                            <div class="Additional_comments" style="display:inline; margin-left: 3rem; user-select: none; cursor: pointer;">
+<span class="fa fa-commenting-o" style="color: #909396"></span>
+                                <p style="display: inline; font-size: 14px">回复</p>
+                            </div>
 
-                        </p>
-
-                        <img alt="Card image" class="card-img-bottom"
-                             src="..\static\img\ViewBlog\lgm.jpg" style="width: 60%; height:30% ">
+                            <div class="Fill_comments" style=" display: none;width:100%;margin-top: 2rem">
+                                <div class="input-group mb-3">
+                                    <form>
+                                    <input aria-describedby="basic-addon2" aria-label="" class="form-control" placeholder="" type="text">
+                                    <div class="input-group-append">
+                                        <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
+                                            回复
+                                        </button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </li>
-                <!--点赞，阅读量，评论数-->
+
+
+                <!--发表评论-->
                 <li class="list-group-item">
-                                <div id="xh" style="margin: 2%">
-                                    <svg class="bi bi-heart" fill="currentColor" height="1.5rem" viewBox="0 0 16 16" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" fill-rule="evenodd"/>
-                                    </svg>
-                                    <div id="likes" style="display: inline;">
-                                        30
-                                    </div>
-                                    <p style="display: inline;font-size: 14px">喜欢</p>
-                                </div>
-                            <div id="cai" style="margin: 2%">
-                                <svg class="bi bi-chat-left-dots" fill="currentColor" height="1.5rem" viewBox="0 0 16 16" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" fill-rule="evenodd"/>
-                                    <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
-                                </svg>
-                                <div id="commentCount;" style="display: inline">
-                                    30
-                                </div>
-                                <p style="display: inline;font-size: 14px">评论数</p>
-                            </div>
-                            <div id="can" style="margin: 2%">
-                                <svg class="bi bi-eye" fill="currentColor" height="2rem" viewBox="0 0 16 16" width="2rem" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.134 13.134 0 0 0 1.66 2.043C4.12 11.332 5.88 12.5 8 12.5c2.12 0 3.879-1.168 5.168-2.457A13.134 13.134 0 0 0 14.828 8a13.133 13.133 0 0 0-1.66-2.043C11.879 4.668 10.119 3.5 8 3.5c-2.12 0-3.879 1.168-5.168 2.457A13.133 13.133 0 0 0 1.172 8z" fill-rule="evenodd"/>
-                                    <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" fill-rule="evenodd"/>
-                                </svg>
-                                <div id="pageviews" style="display: inline;">
-                                    30
-                                </div>
-                                <p style="display: inline; font-size: 14px">阅读量</p>
-                            </div>
+                    <div class="form-group">
+                        <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
+                            <img alt="..." src="..\static\img\default.png" style="border-radius :50%; width: 2rem;height: 2rem">
+                        </div>
+                        <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
+                            <p style="display: inline; font-size: 14px">嘤嘤怪</p>
+                        </div>
+
+                        <textarea  class="form-control" id="comment" rows="3" style="margin-top: 1rem"></textarea>
+                    </div>
+                    <div style="width: 100%; text-align: right">
+                        <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
+                            发表评论
+                        </button>
+                    </div>
                 </li>
                 <p>
                     <br>
                 </p>
             </ul>
-    </div>
-    <!--评论部分-->
-    <div style="margin-top: 3rem">
-        <div class="card" style=" border-radius :0.5rem; top: 3%; width: 100%; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
-
-
-                <ul class="list-group list-group-flush">
-                    <!--评论一-->
-                    <li class="list-group-item" >
-                        <div class="card border-light mb-3">
-                            <!--评论头像-->
-                            <div class="card-header">
-                                <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
-                                    <img alt="..." src="..\static\img\ViewBlog\stwb.png" style="border-radius :50%; width: 2rem;height: 2rem">
-                                </div>
-                                <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
-                                    <p style="display: inline; font-size: 14px">黑虎阿福</p>
-                                </div>
-                                <div style="display: inline; margin-left: 22rem;width: 2rem;height: 2rem">
-                                    <p style="display: inline; font-size: 14px;opacity: 0.5 ">回答于 2018-04-02</p>
-                                </div>
-                            </div>
-                            <!-- 评论-->
-                            <div class="card-body">
-                                <p class="card-text" style="text-indent: 2rem;">
-                                    黑虎掏心，泰山压顶，二龙戏珠，螳螂拳,蛇形步，莲花飘，蝎子掌，弗拉明戈舞步，飞天捶 ,
-                                    猫落地，熊掌出击，猫抖水，猫转身，飞鹤捕虾，猩猩折枝，兔子拳，骡子踢腿，龙虾爪
-                                </p>
-                            </div>
-                            <!--点赞-->
-                            <div class="card-footer">
-                                <div id="zan" style="display:inline;">
-                                    <svg class="bi bi-hand-thumbs-up" fill="currentColor" height="1.5em" viewBox="0 0 16 16" width="1.5em" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16v-1c.563 0 .901-.272 1.066-.56a.865.865 0 0 0 .121-.416c0-.12-.035-.165-.04-.17l-.354-.354.353-.354c.202-.201.407-.511.505-.804.104-.312.043-.441-.005-.488l-.353-.354.353-.354c.043-.042.105-.14.154-.315.048-.167.075-.37.075-.581 0-.211-.027-.414-.075-.581-.05-.174-.111-.273-.154-.315L12.793 9l.353-.354c.353-.352.373-.713.267-1.02-.122-.35-.396-.593-.571-.652-.653-.217-1.447-.224-2.11-.164a8.907 8.907 0 0 0-1.094.171l-.014.003-.003.001a.5.5 0 0 1-.595-.643 8.34 8.34 0 0 0 .145-4.726c-.03-.111-.128-.215-.288-.255l-.262-.065c-.306-.077-.642.156-.667.518-.075 1.082-.239 2.15-.482 2.85-.174.502-.603 1.268-1.238 1.977-.637.712-1.519 1.41-2.614 1.708-.394.108-.62.396-.62.65v4.002c0 .26.22.515.553.55 1.293.137 1.936.53 2.491.868l.04.025c.27.164.495.296.776.393.277.095.63.163 1.14.163h3.5v1H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z" fill-rule="evenodd"/>
-                                    </svg>
-                                    <div id="commentlikes" style="display: inline;">
-                                        30
-                                    </div>
-                                </div>
-                                <!--回复-->
-                                    <div  id="Additional_comments" style="display:inline; margin-left: 3rem; user-select: none; cursor: pointer;">
-                                        <svg class="bi bi-chat-left-text" fill="currentColor" height="1.5rem" viewBox="0 0 16 16" width="1.5rem" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M14 1H2a1 1 0 0 0-1 1v11.586l2-2A2 2 0 0 1 4.414 11H14a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" fill-rule="evenodd"/>
-                                            <path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z" fill-rule="evenodd"/>
-                                        </svg>
-                                        <p style="display: inline; font-size: 14px">回复</p>
-                                    </div>
-
-                                <div id="Fill_comments" style=" display: none;width:100%;margin-top: 2rem">
-                                    <div class="input-group mb-3">
-                                        <input aria-describedby="basic-addon2" aria-label="" class="form-control" placeholder="" type="text">
-                                        <div class="input-group-append">
-                                            <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
-                                            回复
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                            </div>
-                        </div>
-                    </li>
-
-
-                    <!--发表评论-->
-                    <li class="list-group-item">
-                        <div class="form-group">
-                            <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
-                                <img alt="..." src="..\static\img\default.png" style="border-radius :50%; width: 2rem;height: 2rem">
-                            </div>
-                            <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
-                                <p style="display: inline; font-size: 14px">嘤嘤怪</p>
-                            </div>
-                            <label for="comment"></label>
-                            <textarea  class="form-control" id="comment" rows="3" style="margin-top: 1rem"></textarea>
-                        </div>
-                        <div style="width: 100%; text-align: right">
-                            <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
-                                发表评论
-                            </button>
-                        </div>
-                    </li>
-                    <p>
-                        <br>
-                    </p>
-                </ul>
 
 
 
@@ -234,17 +225,18 @@
     </div>
 </div>
 
-
+<!-- todo 相关推荐-->
 <!--右边div（相关推荐）-->
 <div id="right_frame">
-    <div class="card" style="top: 3%; width: 100%;  border-radius :0.5rem; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
+    <div class="card"
+         style="top: 3%; width: 100%;  border-radius :0.5rem; box-shadow: 0 8px 8px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;">
         <div class="card-body">
             <h4 class="card-title">相关推荐</h4>
             <!--推荐一-->
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-md-4">
-                        <img alt="..."  class="card-img" src="..\static\img\ViewBlog\peiqi.jpg" style="height: 100%">
+                        <img alt="..." class="card-img" src="/img/ViewBlog/peiqi.jpg" style="height: 100%">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -257,14 +249,27 @@
         </div>
     </div>
 </div>
-
 <script>
-
-
-    var Additional_comments = document.getElementById('Additional_comments');
-    var Fill_comments = document.getElementById('Fill_comments');
+    //todo ajax动态刷新comments
+    $.ajax({
+        type: "post",
+        url: [["/blog/"+${blog.id}+"/comments"]],
+        dataType: "JSON",
+        success: function (data) {
+            let list = data.list;
+            let html = ""
+            $.each(list , function () {
+                html += ""
+            })
+            $("#comments").html(html);
+        }
+    })
+</script>
+<script>
+    var Additional_comments = document.getElementsByClassName('Additional_comments');
+    var Fill_comments = document.getElementsByClassName('Fill_comments');
     var flag3 = 0;
-    Additional_comments.onclick = function() {
+    Additional_comments.onclick = function () {
         if (flag3 === 0) {
             Fill_comments.style.display = "block";
         }
@@ -277,43 +282,9 @@
         }
         flag3++;
     }
-
-
-
-
-    var xh = document.getElementById('xh');
-    var likes = document.getElementById('likes');
-    var flag1 = 0;
-    xh.onclick = function () {
-        if (flag1 === 0) {
-            likes.innerHTML++;
-        }
-        if (flag1 === 1) {
-            likes.innerHTML--;
-        }
-        if (flag1 === 2) {
-            likes.innerHTML++;
-            flag1 = 0;
-        }
-        flag1++;
-    }
-
-    var zan = document.getElementById('zan');
-    var commentlikes = document.getElementById('commentlikes');
-    var flag2 = 0;
-    zan.onclick = function () {
-        if (flag2 === 0) {
-            commentlikes.innerHTML++;
-        }
-        if (flag2 === 1) {
-            commentlikes.innerHTML--;
-        }
-        if (flag2 === 2) {
-            commentlikes.innerHTML++;
-            flag2 = 0;
-        }
-        flag2++;
-    }
+</script>
+<script>
+    
 
 </script>
 </body>
