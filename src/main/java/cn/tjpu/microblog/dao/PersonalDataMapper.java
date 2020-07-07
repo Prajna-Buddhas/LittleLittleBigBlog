@@ -18,6 +18,6 @@ import java.util.List;
 public interface PersonalDataMapper {
 
     //todo 查询单个用户信息
-    @Select("")
+    @Select(" SELECT * FROM microblog_user WHERE user_id = #{userId} ")
     List<User> getUser(User user);
 }

@@ -21,11 +21,12 @@ import java.util.List;
 @Mapper
 public interface ViewBlogMapper {
 
-    //todo 查询浏览量
-    @Select("")
+    // 查询浏览量
+    @Select("SELECT pageviews FROM microblog_blog WHERE blog_id=#{blogId} ")
     Integer getPageView(Blog blog);
 
     // 查询点赞数
+<<<<<<< HEAD
     @Select("")
     Integer getLikes(Blog blog);
 
@@ -35,6 +36,17 @@ public interface ViewBlogMapper {
 
     // 点赞功能，点赞数-1
     @Update("")
+=======
+    @Select("SELECT likes FROM microblog_blog WHERE blog_id=#{blogId} ")
+    Integer getLikes(Blog blog);
+
+    // 点赞功能，点赞数+1
+    @Update("UPDATE microblog_blog SET likes =likes +1 WHERE blog_id=#{blogId}")
+    Integer addLike(Blog blog);
+
+    // 点赞功能，点赞数-1
+    @Update("UPDATE microblog_blog SET likes =likes -1 WHERE blog_id=#{blogId}")
+>>>>>>> 51b159546ef9c402e8b23f77825564499c404c24
     Integer reduceLike(Blog blog);
 
     @Select("SELECT username FROM microblog_user WHERE user_id = #{userId}")

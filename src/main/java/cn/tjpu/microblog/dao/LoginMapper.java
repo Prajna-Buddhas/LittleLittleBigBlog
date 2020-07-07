@@ -19,6 +19,6 @@ import java.util.List;
 public interface LoginMapper {
 
     //todo 向microblog_user表查询用户密码
-    @Select("")
-    List<User> login();
+    @Select("SELECT password FROM microblog_user WHERE username = #{username};")
+    List<User> login(User user);
 }

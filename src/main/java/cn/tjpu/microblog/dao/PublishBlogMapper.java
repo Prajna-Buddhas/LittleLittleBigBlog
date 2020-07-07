@@ -17,6 +17,7 @@ import org.springframework.stereotype.Repository;
 public interface PublishBlogMapper {
 
     //todo 发表博客
-    @Insert("")
+    @Insert("INSERT INTO microblog_blog (title,content,tag_id,blog_photo,author_id,likes,pageviews,comment_count)" +
+            "VALUES (#{title},#{content},#{tagId},#{blogPhoto},#{authorId},0,0,0);")
     Integer publishBlog(Blog blog);
 }
