@@ -150,6 +150,7 @@
 
                 <!--发表评论-->
                 <li class="list-group-item">
+                    <form method="post" th:action="'/blog/'+${blog.blogId}+'/publishBlog'">
                     <div class="form-group">
                         <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
                             <img alt="..." src="/img/default.png"
@@ -166,6 +167,7 @@
                             发表评论
                         </button>
                     </div>
+                    </form>
                 </li>
                 <p>
                     <br>

@@ -56,4 +56,10 @@ public class ViewBlogController {
         blog.setBlogId(blogId);
         return service.getRecommend(blog);
     }
+
+    @PostMapping("/blog/{id}/publishBlog")
+    public String publishBlog(@PathVariable Integer id, Comment comment) {
+        service.publishComment(comment);
+        return "redirect:/blog/"+id;
+    }
 }

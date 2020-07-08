@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class ViewBlogService {
     @Resource
     private ViewBlogMapper viewBlogMapper;
+    HttpSession session;
 
     //获取博客信息
     public Blog getBlog(Integer blogId) {
@@ -74,5 +76,11 @@ public class ViewBlogService {
 
     public String getAuthorName(Integer authorId) {
         return viewBlogMapper.getAuthorName(authorId);
+    }
+
+    public void publishComment(Comment comment) {
+        Integer integer = (Integer) session.getAttribute("userId");
+        comment.setUserId(integer);
+        viewBlogMapper.publishComment(comment);
     }
 }
