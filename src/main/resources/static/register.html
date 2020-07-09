@@ -57,12 +57,12 @@
         <div id="register">
 
             <h2>register</h2>
-            <form method="post" >
+            <form name="form1" id="registers" action="/register" method="post" onsubmit="return abc()">
                 <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text" ><i class="fa fa-address-card"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"><br>
+                    <input name="username" id="username" type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping"><br>
                 </div>
 <br><br>
 
@@ -70,26 +70,26 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" ><i class="fa fa-key"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
+                    <input name="password" id="password" type="password" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="addon-wrapping">
                 </div>
                 <br><br>
                 <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text" ><i class="fa fa-calendar"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="birthday" aria-label="birthday" aria-describedby="addon-wrapping">
+                    <input name="birthday" id="birthday" type="text" class="form-control" placeholder="birthday" aria-label="birthday" aria-describedby="addon-wrapping">
                 </div>
 <br><br>
                 <div class="input-group flex-nowrap">
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-wrench"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="nickname" aria-label="nickname" aria-describedby="addon-wrapping">
+                    <input name="nickname" id="nickname" type="text" class="form-control" placeholder="nickname" aria-label="nickname" aria-describedby="addon-wrapping">
                 </div>
 
                 <br><br>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <input name="email" id="email" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">@example.com</span>
                         </div>
@@ -97,7 +97,7 @@
                 <br>
                 <div>
                     <div style="display: inline">
-                        <button type="button" class="btn btn-outline-primary"  href="#" style="display: inline">立即注册</button>
+                        <button id="submits" type="button" value="put" name="_method" class="btn btn-outline-primary"  href="#" style="display: inline">立即注册</button>
                     </div>
                     <div style="display: inline;"> <span style="font-size: medium;text-align: right">&nbsp;&nbsp;&nbsp;已有账号？点击<a href="login.html"> 登录</a></span></div>
                 </div>
@@ -106,6 +106,22 @@
     </div>
 
 </div>
+
+<script>
+    $("#submits").click(function () {
+        const username = $("#username").val();
+        const password = $("#password").val();
+        const birthday = $("#birthday").val();
+        const nickname= $("#nickname").val();
+        const email = $("#email").val();
+        if ( username === "" || password === "" || nickname ==="" || email ==="" || birthday === null) {
+            alert("请填写完所有内容！");
+        } else {
+            document.getElementById("registers").submit();
+        }
+    })
+</script>
+
 
 </body>
 </html>
