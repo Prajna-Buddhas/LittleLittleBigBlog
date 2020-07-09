@@ -47,14 +47,14 @@
 
 <div class="card" style="margin: 2% 10% 10%;padding: 5%">
     <h1 style="color: rgba(0,20,5,0.68)">发布</h1>
-    <form>
+    <form action="/publish" method="post" id="publish">
         <ul class="list-group" style="list-style: none">
             <li ><div><label>
                 <input id="title" type="text" name="title" class="form-control" placeholder="请输入标题">
             </label></div></li>
             <li >
                 <div><label>
-                <textarea id="content" class="form-control" style="width: 100%;overflow: auto;
+                <textarea id="content" name="content" class="form-control" style="width: 100%;overflow: auto;
         word-break: break-all;" cols="70" rows="10" placeholder="在此编辑您的博客"></textarea>
                 </label>
                 </div></li><li>
@@ -91,7 +91,7 @@
                     请填写完所有内容！
                 </div>
             </li><br>
-            <li><button type="button" id="submit" class="btn btn-info">发表</button></li>
+            <li><button type="button" id="submits" value="put" name="_method" class="btn btn-info">发表</button></li>
         </ul>
     </form>
 </div>
@@ -121,7 +121,7 @@
     window.addEventListener("DOMContentLoaded", contentLoaded, false);
 
 
-    $("#submit").click(function () {
+    $("#submits").click(function () {
         const title = $("#title").val();
         const content = $("#content").val();
         const tagId = $("input:radio:checked").val();
@@ -129,7 +129,7 @@
             $("#alert").css("display", "block");
         } else {
             $("#alert").alert('close');
-
+            document.getElementById("publish").submit();
         }
     })
 </script>

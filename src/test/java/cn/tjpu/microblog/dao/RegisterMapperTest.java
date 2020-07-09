@@ -31,7 +31,6 @@ public class RegisterMapperTest {
         user.setPassword("奥力给");
         user.setNickname("八八");
         user.setEmail("123456789@qq.com");
-        user.setAvatarId("1");
         assert registerMapper.registerUser(user) == 1;
     }
 }
