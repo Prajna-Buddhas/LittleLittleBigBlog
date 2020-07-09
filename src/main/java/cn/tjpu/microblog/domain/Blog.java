@@ -2,7 +2,6 @@ package cn.tjpu.microblog.domain;
 
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Controller;
 
 import java.util.Date;
 import java.util.List;
