@@ -24,7 +24,6 @@ import java.util.Map;
 public class ViewBlogService {
     @Resource
     private ViewBlogMapper viewBlogMapper;
-    HttpSession session;
 
     //获取博客信息
     public Blog getBlog(Integer blogId) {
@@ -78,7 +77,7 @@ public class ViewBlogService {
         return viewBlogMapper.getAuthorName(authorId);
     }
 
-    public void publishComment(Comment comment) {
+    public void publishComment(Comment comment, HttpSession session) {
         Integer integer = (Integer) session.getAttribute("userId");
         comment.setUserId(integer);
         viewBlogMapper.publishComment(comment);

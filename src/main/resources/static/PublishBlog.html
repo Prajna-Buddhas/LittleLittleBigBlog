@@ -47,7 +47,7 @@
 
 <div class="card" style="margin: 2% 10% 10%;padding: 5%">
     <h1 style="color: rgba(0,20,5,0.68)">发布</h1>
-    <form>
+    <form method="post" enctype="multipart/form-data">
         <ul class="list-group" style="list-style: none">
             <li ><div><label>
                 <input id="title" type="text" name="title" class="form-control" placeholder="请输入标题">
@@ -80,11 +80,11 @@
             </div></li>
             <li>
                 <div class="div_model">
-                    <img id="cropedBigImg0" style="width: 10rem;height: 10rem" src="img/publish/upload.jpg" class="div_model_img"/>
+                    <img id="cropedBigImg0" style="width: 10rem;height: 10rem" src="img/publish/upload.jpg" class="div_model_img" alt="blogImg"/>
                 </div>
             </li><br>
             <li>
-                <input type="file"class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg"id="chooseImage0">
+                <input type="file" name="uploadBlogImg" class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg" onchange="" id="chooseImage0">
             </li><br>
             <li>
                 <div id="alert" style="display: none" class="alert alert-danger" role="alert">
@@ -110,6 +110,8 @@
         }
         reader.readAsDataURL(file);
     }
+
+
 
     function contentLoaded() {
         document.getElementById('chooseImage0').addEventListener('change',
