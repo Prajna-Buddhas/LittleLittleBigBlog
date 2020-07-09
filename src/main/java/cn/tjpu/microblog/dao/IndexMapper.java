@@ -27,4 +27,8 @@ public interface IndexMapper {
     @Select("SELECT title,content,release_date,blog_photo FROM microblog_blog ORDER BY release_date DESC LIMIT 10")
     List<Blog> getIndexRecommend(Blog blog);
 
+
+    String getAuthorName(Integer authorId);
+
+
 }
