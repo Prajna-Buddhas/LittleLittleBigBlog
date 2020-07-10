@@ -7,6 +7,8 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.annotation.Resource;
+
 /**
  * 设置静态文件虚拟地址
  *
@@ -17,20 +19,18 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfigAdapter implements WebMvcConfigurer {
 
+    @Resource
+    LoginHandleInterception loginHandleInterception;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/image/avatar/**").addResourceLocations("file:/E:/Practice/avatar/");
         registry.addResourceHandler("/image/blogImg/**").addResourceLocations("file:/E:/Practice/blogImg/");
     }
 
-    @Bean
-    public WebMvcConfigurer webMvcConfigurer() {
-        return new WebMvcConfigurer() {
-            @Override
-            public void addInterceptors(InterceptorRegistry registry) {
-                registry.addInterceptor(new LoginHandleInterception()).addPathPatterns("/**")
-                .excludePathPatterns("/login","/login.html","/register");
-            }
-        };
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginHandleInterception).addPathPatterns("/**")
+                .excludePathPatterns("/login","/login.html","/register","/css/**","/js/**","/img/**");
     }
 }

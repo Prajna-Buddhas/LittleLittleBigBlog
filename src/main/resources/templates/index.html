@@ -52,7 +52,7 @@
                                 </form>
                             </li>
                         </ul>
-                        <img class="rounded-circle " th:if="${session.userInfo.getAvatarId()} != null" th:src="/img/+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+                        <img class="rounded-circle "  th:src="@{/img/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
                         <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
                         <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
                         <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>

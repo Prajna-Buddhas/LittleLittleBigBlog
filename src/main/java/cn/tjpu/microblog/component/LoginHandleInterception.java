@@ -1,13 +1,12 @@
 package cn.tjpu.microblog.component;
 
-import cn.tjpu.microblog.domain.User;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * 登录拦截器
@@ -17,19 +16,18 @@ import javax.servlet.http.HttpSession;
  */
 
 @Slf4j
+@Component
 public class LoginHandleInterception implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        String userInfo = "userInfo";
-        User user = (User) request.getSession().getAttribute(userInfo);
-        if (user == null) {
-            if (log.isDebugEnabled()) {
-                log.debug("Not logged in!");
-            }
-            request.getRequestDispatcher("/login.html").forward(request,response);
+        Object user = request.getSession().getAttribute("userInfo");
+
+        if (user != null) {
+            return true;
+        } else {
+            response.sendRedirect("/login.html");
             return false;
         }
-        return true;
     }
 
     @Override

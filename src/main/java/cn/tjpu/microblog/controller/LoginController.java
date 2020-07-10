@@ -30,7 +30,7 @@ public class LoginController {
             modelAndView.setViewName("login");
         }
         else {
-            modelAndView.setViewName("index");
+            modelAndView.setViewName("PersonalData");
         }
         return modelAndView;
     }
