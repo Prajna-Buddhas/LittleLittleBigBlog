@@ -21,7 +21,7 @@ public class TagMapperTest {
     public void getTagDescription() {
         Tag tag = new Tag();
         tag.setTagId(1);
-        List<Tag>  list = tagMapper.getTagDescription(tag);
+        List<Tag>  list = tagMapper.getTagDescription(tag.getTagId());
         assert list.get(0).getTagName().equals("美食");
     }
 
