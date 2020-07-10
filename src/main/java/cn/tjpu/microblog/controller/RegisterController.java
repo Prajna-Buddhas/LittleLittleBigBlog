@@ -20,6 +20,6 @@ public class RegisterController {
     @PostMapping("/register")
     public String Register(User user) {
         registerService.register(user);
-        return "redirect:/PersonalData.html";
+        return "redirect:/personalData";
     }
 }
