@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -70,14 +71,14 @@
 
         <a href="#top">
             <div style="box-shadow: 3px 4px 4px rgba(10,16,20,0.24),0 0 8px rgba(10,16,20,0.12);text-decoration: none;border-radius: 50%;background: #A79EAF;width: 3.5rem; height: 3.5rem; bottom: 4rem;right: 9rem; position: fixed; text-align: center">
-                <img src="..\static\img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="">
+                <img src="img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="">
             </div>
         </a>
 
         <!--发表博客-->
         <a href="">
             <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
-                <img src="..\static\img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="">
+                <img src="img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="">
             </div>
         </a>
 
@@ -86,8 +87,8 @@
        <!--标题-->
     <div style="opacity: 0.8"  class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">美食</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <h1 class="display-4" th:text="${tag.tagName}">美食</h1>
+            <p class="lead" th:text="${tag.tagDescription}">loading...</p>
         </div>
     </div>
 
@@ -137,27 +138,7 @@
     })
         </script>
 
-        <script>
-        $.ajax({
-            async: false,
-            type: "post",
-            url: "/index",
-            dataType: "json",
-            success: function (data) {
-                let html = "";
-                $.each(data, function (index, value) {
-                    var des = value.tagDescription.toString().substr(0,60)
-                    html +="<div style=\"opacity: 0.8\"  class=\"jumbotron jumbotron-fluid\">\n" +
-                        "        <div class=\"container\">\n" +
-                        "            <h1 class=\"display-4\">"+ value.tagName +"</h1>\n" +
-                        "            <p class=\"lead\">"+ value.tagDescription +"</p>\n" +
-                        "        </div>\n" +
-                        "    </div>"
-                })
 
-            }
-    })
-</script>
 
 </body>
 </html>
