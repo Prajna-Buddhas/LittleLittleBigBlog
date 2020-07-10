@@ -82,6 +82,8 @@
         </a>
 
     </div>
+
+       <!--标题-->
     <div style="opacity: 0.8"  class="jumbotron jumbotron-fluid">
         <div class="container">
             <h1 class="display-4">美食</h1>
@@ -92,41 +94,70 @@
 
 
     <!--内容-->
-    <div align="center" class="animate__bounce">
-        <div class="card mb-3 " style="max-width: 56rem;border-radius: 2rem;margin-top: 3rem">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="img/tag/food1.jpg" class="card-img" alt="..." style="border-radius: 2rem 0.25rem  0.25rem 2rem">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div align="center" class="animate__bounce" id="addblogs">
+
     </div>
-    <div align="center" class="animate__bounce">
-        <div class="card mb-3 " style="max-width: 56rem;border-radius: 2rem;margin-top: 3rem">
-            <div class="row no-gutters">
-                <div class="col-md-4">
-                    <img src="img/tag/food2.jpg" class="card-img" alt="..." style="border-radius: 2rem 0.25rem  0.25rem 2rem">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
+
 
 </div>
+<script>
+    $.ajax({
+        async: false,
+        type: "post",
+        url: "/index",
+        dataType: "json",
+        success: function (data) {
+            let html = "";
+            $.each(data, function (index, value) {
+                var con = value.content.toString().substr(0, 150)
 
+                html += "<div align=\"center\" class=\"animate__bounce\" >\n" +
+                    "                <div class=\"card mb-3 \" style=\"max-width: 56rem;border-radius: 2rem;margin-top: 9rem\">\n" +
+                    "                    <div class=\"row no-gutters\">\n" +
+                    "                        <div class=\"col-md-4\">\n" +
+                    "                            <img alt=\"...\" class=\"card-img\" src=\"img/index/saber.jpg\" style=\"border-radius: 2rem 0.25rem  0.25rem 2rem\">\n" +
+                    "                        </div>\n" +
+                    "                        <div class=\"col-md-8\">\n" +
+                    "                            <div class=\"card-body\">\n" +
+                    "                                <h5 class=\"card-title\" >" + value.title + "</h5>\n" +
+                    "                                <p class=\"card-text\" >" + con + "</p>\n" +
+                    "                                <p class=\"card-text\"><small class=\"text-muted\"\n" +
+                    "                                                           >" + value.releaseDate + "</small></p>\n" +
+                    "                            </div>\n" +
+                    "                        </div>\n" +
+                    "                    </div>\n" +
+                    "                </div>\n" +
+                    "\t\t\t</div>"
+            })
+            $('#addblogs').html(html);
+
+        }
+    })
+        </script>
+
+        <script>
+        $.ajax({
+            async: false,
+            type: "post",
+            url: "/index",
+            dataType: "json",
+            success: function (data) {
+                let html = "";
+                $.each(data, function (index, value) {
+                    var des = value.tagDescription.toString().substr(0,60)
+                    html +="<div style=\"opacity: 0.8\"  class=\"jumbotron jumbotron-fluid\">\n" +
+                        "        <div class=\"container\">\n" +
+                        "            <h1 class=\"display-4\">"+ value.tagName +"</h1>\n" +
+                        "            <p class=\"lead\">"+ value.tagDescription +"</p>\n" +
+                        "        </div>\n" +
+                        "    </div>"
+                })
+
+            }
+    })
+</script>
 
 </body>
 </html>

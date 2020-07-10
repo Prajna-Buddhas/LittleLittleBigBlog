@@ -17,20 +17,10 @@ public class IndexService {
     @Resource
     private IndexMapper indexMapper;
 
-    public List<Blog> getIndexRecommend(Blog blog) {
-        Blog mainBlog = indexMapper.getIndexRecommend(blog.getBlogId()).get(0);
-        if (mainBlog != null){
-            return indexMapper.getIndexRecommend(mainBlog);
-        }
-        if(log.isErrorEnabled())
-            log.error("can't get recommendation by blogId {}", blog.getBlogId());
-        throw new RuntimeException("can't get recommendation");
+    public List<Blog> getIndexRecommend() {
+
+        return indexMapper.getIndexRecommend();
+
     }
-    public String getAuthorName(Integer authorId) {
-        return indexMapper.getAuthorName(authorId);
-    }
-
-
-
 
 }

@@ -18,12 +18,17 @@ public class IndexController {
     @Resource
     IndexService service;
 
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
+
     @ResponseBody
-    @RequestMapping("/blog/{id}/recommend")
-    public List<Blog> getIndexRecommend(@PathVariable("id") Integer blogId) {
-        Blog blog = new Blog();
-        blog.setBlogId(blogId);
-        return service.getIndexRecommend(blog);
+    @RequestMapping("/index")
+    public List<Blog> getIndexRecommend() {
+
+
+        return service.getIndexRecommend();
     }
 
 

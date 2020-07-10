@@ -25,10 +25,6 @@ public interface IndexMapper {
 
     //todo 首页推荐，查看最新发布的10条博客
     @Select("SELECT title,content,release_date,blog_photo FROM microblog_blog ORDER BY release_date DESC LIMIT 10")
-    List<Blog> getIndexRecommend(Blog blog);
-
-
-    String getAuthorName(Integer authorId);
-
+    List<Blog> getIndexRecommend();
 
 }

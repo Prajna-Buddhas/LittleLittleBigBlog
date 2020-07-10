@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Slf4j
 @Service
@@ -18,27 +19,14 @@ public class TagService {
     private TagMapper tagMapper;
 
     //获取当前Tag信息
-    public Tag getTagDescription(Tag tag){
-        List<Tag> tags =  tagMapper.getTagDescription(tag);
+    public Tag getTagDescription(Integer tagId){
+        List<Tag> tags =  tagMapper.getTagDescription(tagId);
         if(log.isInfoEnabled())
             log.info("Getting tag information {}", tags);
         return tags.get(0);
     }
     //获取当前tag页面的博客信息
-    public Tag getBlogsByTagId(Blog blog){return tagMapper.getBlogsByTagId(tagId);}
+    public List<Blog> getBlogsByTagId(Integer tagId){return tagMapper.getBlogsByTagId(tagId);}
 
-    public Map<String, Object> (Comment comment) {
-        Map<String, Object> tagMap = new HashMap<>();
-        String username = getBlogsByTagId(blog.get);
-
-        if ("".equals(username) || username == null) {
-            if (log.isInfoEnabled())
-                log.info("can't find user by userId{}", comment.getUserId());
-        }   else {
-            commentMap.put("username", getUsernameByComment(comment.getUserId())) ;
-            commentMap.put("comment",comment);
-        }
-        return commentMap;
-    }
 
 }
