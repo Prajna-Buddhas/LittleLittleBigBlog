@@ -29,7 +29,7 @@ public class TagMapperTest {
     public void getBlogsByTagId() {
         Blog blog = new Blog();
         blog.setTagId(2);
-        List<Blog>  list = tagMapper.getBlogsByTagId(blog);
+        List<Blog>  list = tagMapper.getBlogsByTagId(2);
         assert list.size() == 1;
     }
 }
