@@ -61,6 +61,7 @@ public class ViewBlogController {
 
     @PostMapping("/blog/{id}/publishBlog")
     public String publishBlog(@PathVariable Integer id, Comment comment, HttpSession session) {
+       comment.setBlogId(id);
         service.publishComment(comment, session);
         return "redirect:/blog/"+id;
     }

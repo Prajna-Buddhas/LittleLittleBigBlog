@@ -50,10 +50,9 @@
                 </form>
             </li>
         </ul>
-        <img alt="Head portrait" class="rounded-circle " src="img/default.png"
-             style="height: 40px;width: 40px">
-        <a class="nav-link navbar-text" href="../static/login.html">登录<span class="sr-only">(current)</span></a>/
-        <a class="nav-link navbar-text" href="register.html">注册<span class="sr-only">(current)</span></a>
+        <img class="rounded-circle "  th:src="@{/img/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+        <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
+        <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
     </div>
 </nav>
 
@@ -157,10 +156,10 @@
                                  style="border-radius :50%; width: 2rem;height: 2rem">
                         </div>
                         <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
-                            <p style="display: inline; font-size: 14px">嘤嘤怪</p>
+                            <p th:text="${session.userInfo.username}" style="display: inline; font-size: 14px">嘤嘤怪</p>
                         </div>
 
-                        <textarea class="form-control" id="comment" rows="3" style="margin-top: 1rem"></textarea>
+                        <textarea class="form-control" name="commentContent" id="comment" rows="3" style="margin-top: 1rem"></textarea>
                     </div>
                     <div style="width: 100%; text-align: right">
                         <button class="btn  mb-2" style="background: #DEEFDD" type="submit">
@@ -275,7 +274,7 @@
                 html += " <div class=\"card mb-3\">\n" +
                     "                <div class=\"row no-gutters\">\n" +
                     "                    <div class=\"col-md-4\">\n" +
-                    "                        <img alt=\"...\"  class=\"card-img\" src=\"/img/ViewBlog/peiqi.jpg\" style=\"height: 100%\">\n" +
+                    "                        <img alt=\"...\"  class=\"card-img\" src=\"/image/blogImg/" + value.blogPhoto + "\" style=\"height: 100%\">\n" +
                     "                    </div>\n" +
                     "                    <div class=\"col-md-8\">\n" +
                     "                        <div class=\"card-body\">\n" +

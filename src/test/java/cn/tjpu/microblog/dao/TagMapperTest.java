@@ -18,14 +18,18 @@ public class TagMapperTest {
     TagMapper tagMapper;
 
     @Test
-    public void getTagDescription(Integer tagId) {
-        List<Tag>  list = tagMapper.getTagDescription(tagId);
+    public void getTagDescription() {
+        Tag tag = new Tag();
+        tag.setTagId(1);
+        List<Tag>  list = tagMapper.getTagDescription(tag);
         assert list.get(0).getTagName().equals("美食");
     }
 
     @Test
-    public void getBlogsByTagId(Integer tagId) {
-        List<Blog>  list = tagMapper.getBlogsByTagId(tagId);
+    public void getBlogsByTagId() {
+        Blog blog = new Blog();
+        blog.setTagId(2);
+        List<Blog>  list = tagMapper.getBlogsByTagId(2);
         assert list.size() == 1;
     }
 }
