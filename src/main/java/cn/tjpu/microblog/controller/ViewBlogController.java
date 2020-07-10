@@ -32,7 +32,7 @@ public class ViewBlogController {
     public ModelAndView ViewBlog(@PathVariable("id") Integer blogId, ModelAndView modelAndView) {
         modelAndView.setViewName("ViewBlog");
         Blog blog = service.getBlog(blogId);
-        String author = service.getAuthorName(blogId);
+        String author = service.getAuthorName(blog.getAuthorId());
         modelAndView.addObject("blog", blog);
         modelAndView.addObject("author", author);
         return modelAndView;

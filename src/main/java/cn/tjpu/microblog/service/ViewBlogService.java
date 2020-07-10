@@ -3,6 +3,7 @@ package cn.tjpu.microblog.service;
 import cn.tjpu.microblog.dao.ViewBlogMapper;
 import cn.tjpu.microblog.domain.Blog;
 import cn.tjpu.microblog.domain.Comment;
+import cn.tjpu.microblog.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -78,8 +79,7 @@ public class ViewBlogService {
     }
 
     public void publishComment(Comment comment, HttpSession session) {
-        Integer integer = (Integer) session.getAttribute("userId");
-        comment.setUserId(integer);
+        User user = (User) session.getAttribute("userInfo");
         viewBlogMapper.publishComment(comment);
     }
 }

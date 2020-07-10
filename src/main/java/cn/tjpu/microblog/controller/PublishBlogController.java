@@ -5,10 +5,10 @@ import cn.tjpu.microblog.service.PublishBlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
@@ -26,14 +26,9 @@ public class PublishBlogController {
     PublishBlogService publishBlogService;
 
     @PostMapping("/publish")
-    public String PublishBlog(Blog blog , HttpSession session) {
-        publishBlogService.PublishBlog(blog,session);
-        return "redirect:/index.html";
+    public String PublishBlog(Blog blog , @RequestParam("uploadBlogImg")MultipartFile file, HttpServletRequest request) throws IOException {
+        publishBlogService.publishBlog(blog,file,request.getSession());
+        return "redirect:/index";
     }
 
-    @ResponseBody
-    @PostMapping("/photo")
-    public String uploadPhoto(@RequestParam("uploadBlogImg")MultipartFile file) throws IOException {
-        return publishBlogService.saveBlogImg(file);
-    }
 }

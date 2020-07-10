@@ -33,7 +33,7 @@ public class FileUtil {
         File fileName = new File(path,originFileName);
         file.transferTo(fileName);
 
-        return fileUuid.toString();
+        return originFileName;
     }
 
 }

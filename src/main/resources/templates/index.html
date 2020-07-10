@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 	<head>
 		 <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -51,20 +52,21 @@
                                 </form>
                             </li>
                         </ul>
-                        <img class="rounded-circle " src="img/default.png" style="height: 40px;width: 40px">
+                        <img class="rounded-circle " th:if="${session.userInfo.getAvatarId()} != null" th:src="/img/+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+                        <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
                         <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
                         <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>
                     </div>
                 </nav>
                 <a href="#top">
                     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,0.24),0 0 8px rgba(10,16,20,0.12);text-decoration: none;border-radius: 50%;background: #A79EAF;width: 3.5rem; height: 3.5rem; bottom: 4rem;right: 9rem; position: fixed; text-align: center">
-                        <img src="..\static\img\ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
+                        <img src="/img/ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
                     </div>
                 </a>
                 <!--发表博客-->
                 <a href="">
                     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
-                        <img src="..\static\img\publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
+                        <img src="/img/publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
                     </div>
                 </a>
 				<!--轮播图-->
@@ -72,16 +74,16 @@
 				<div class="carousel slide carousel-fade" data-ride="carousel" id="carouselExampleFade" style="height: 18rem;width: 48rem" >
                     <div class="carousel-inner" style="height: 18rem;">
                 <div class="carousel-item active">
-                    <img alt="..." class="d-block w-100" src="img/index/bg.jpg">
+                    <img alt="..." class="d-block w-100" src="/img/index/bg.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img alt="..." class="d-block w-100" src="img/index/movie.PNG">
+                    <img alt="..." class="d-block w-100" src="/img/index/movie.PNG">
                 </div>
                 <div class="carousel-item">
-                    <img alt="..." class="d-block w-100" src="img/index/game.jpg">
+                    <img alt="..." class="d-block w-100" src="/img/index/game.jpg">
                 </div>
                 <div class="carousel-item">
-                    <img alt="..." class="d-block w-100" src="img/index/music.jpg">
+                    <img alt="..." class="d-block w-100" src="/img/index/music.jpg">
                 </div>
              </div>
                     <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleFade" role="button">
@@ -100,7 +102,7 @@
                 <div class="card mb-3 " style="max-width: 56rem;border-radius: 2rem;margin-top: 9rem">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img alt="..." class="card-img" src="img/index/saber.jpg" style="border-radius: 2rem 0.25rem  0.25rem 2rem">
+                            <img alt="..." class="card-img" src="/img/index/saber.jpg" style="border-radius: 2rem 0.25rem  0.25rem 2rem">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
