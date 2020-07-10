@@ -17,6 +17,8 @@
 		<title>见微知著</title>
 
 
+
+
 	</head>
 	<body style="background-color: #F5F5F5;">
 		<div>
@@ -102,7 +104,7 @@
             </div>
 
 
-
+<a></a>
 
 		</div>
 
@@ -110,7 +112,7 @@
         $.ajax({
             async:false,
             type:"post",
-            url:"/index",
+            url:"/index/blogs",
             dataType:"json",
             success:function (data) {
                 let html = "";
@@ -118,11 +120,12 @@
                     var con= value.content.toString().substr(0,150)
                     var dat= value.releaseDate.toString().substr(0,10)
 
-                    html += "<div align=\"center\" class=\"animate__bounce\" >\n" +
-                        "                <div class=\"card mb-3 \" style=\"max-width: 56rem;border-radius: 2rem;margin-top: 9rem\">\n" +
+                    html += "<a style='text-decoration: none;color: #616467' href=\"/blog/"+ value.blogId +"\">" +
+                        "<div align=\"center\" class=\"animate__bounce\" >\n" +
+                        "                <div class=\"card mb-3 \" style=\"max-width: 56rem;border-radius: 2rem;margin-top: 7rem\">\n" +
                         "                    <div class=\"row no-gutters\">\n" +
                         "                        <div class=\"col-md-4\">\n" +
-                        "                            <img alt=\"...\" class=\"card-img\" src=\"img/index/saber.jpg\" style=\"border-radius: 2rem 0.25rem  0.25rem 2rem\">\n" +
+                        "                            <img alt=\"...\" class=\"card-img\" style=\"height: 100%; border-radius: 2rem 0.25rem  0.25rem 2rem\" src=\"/image/blogImg/" + value.blogPhoto + "\" >\n" +
                         "                        </div>\n" +
                         "                        <div class=\"col-md-8\">\n" +
                         "                            <div class=\"card-body\">\n" +
@@ -135,6 +138,7 @@
                         "                    </div>\n" +
                         "                </div>\n" +
                         "\t\t\t</div>"
+                        +"</a>"
                 })
                 $('#addblogs').html(html);
 

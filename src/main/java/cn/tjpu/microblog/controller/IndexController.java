@@ -24,7 +24,7 @@ public class IndexController {
     }
 
     @ResponseBody
-    @RequestMapping("/index")
+    @RequestMapping("/index/blogs")
     public List<Blog> getIndexRecommend() {
 
 

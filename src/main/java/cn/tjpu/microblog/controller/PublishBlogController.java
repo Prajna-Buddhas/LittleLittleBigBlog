@@ -3,6 +3,7 @@ package cn.tjpu.microblog.controller;
 import cn.tjpu.microblog.domain.Blog;
 import cn.tjpu.microblog.service.PublishBlogService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,10 +26,14 @@ public class PublishBlogController {
 
     PublishBlogService publishBlogService;
 
-    @PostMapping("/publish")
-    public String PublishBlog(Blog blog , @RequestParam("uploadBlogImg")MultipartFile file, HttpServletRequest request) throws IOException {
+    @PostMapping("/publish/Blog")
+    public String publishBlog(Blog blog , @RequestParam("uploadBlogImg")MultipartFile file, HttpServletRequest request) throws IOException {
         publishBlogService.publishBlog(blog,file,request.getSession());
         return "redirect:/index";
     }
 
+    @GetMapping("/publish")
+    public String publish() {
+        return "/PublishBlog";
+    }
 }

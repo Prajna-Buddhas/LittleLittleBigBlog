@@ -24,6 +24,6 @@ public interface TagMapper {
     List<Tag> getTagDescription(Integer tagId);
 
     //todo 查询当前tag下所有blog
-    @Select("SELECT title,content,release_date,blog_photo FROM microblog_blog WHERE tag_id = #{tagId}")
+    @Select("SELECT blog_id,title,content,release_date,blog_photo FROM microblog_blog WHERE tag_id = #{tagId}")
     List<Blog> getBlogsByTagId(Integer tagId);
 }
