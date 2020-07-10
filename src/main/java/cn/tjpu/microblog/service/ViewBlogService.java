@@ -80,6 +80,7 @@ public class ViewBlogService {
 
     public void publishComment(Comment comment, HttpSession session) {
         User user = (User) session.getAttribute("userInfo");
+        comment.setUserId(user.getUserId());
         viewBlogMapper.publishComment(comment);
     }
 }

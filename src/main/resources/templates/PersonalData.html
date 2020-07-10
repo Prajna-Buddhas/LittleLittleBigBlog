@@ -40,9 +40,9 @@
                 </form>
             </li>
         </ul>
-        <img src="/img/default.png" style="height: 40px;width: 40px" class="rounded-circle ">
-        <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
-        <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>
+        <img class="rounded-circle "  th:src="@{/img/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+        <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
+        <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
     </div>
 </nav>
 
@@ -56,10 +56,11 @@
     </div>
     <div style="margin: 5%">
         <ul class="list-group">
-            <li class="list-group-item"><div>用户名</div><div th:text="nickname">nickname</div></li>
-            <li class="list-group-item"><div>电子邮箱</div><div>email@gmail.com</div></li>
-            <li class="list-group-item"><div>生日</div><div>2000.1.1</div></li>
-            <li class="list-group-item"><div>注册日期</div><div>2000.1.1</div></li>
+            <li class="list-group-item"><div>用户名</div><div th:text="${session.userInfo.nickname}">nickname</div></li>
+            <li class="list-group-item"><div>电子邮箱</div><div th:text="${session.userInfo.email}">email@gmail.com</div></li>
+            <li class="list-group-item"><div>生日</div><div th:text="${#dates.format(session.userInfo.birthday,'yyyy-MM-dd')}" >2000.1.1</div></li>
+            <li class="list-group-item"><div>注册日期</div><div th:text="${#dates.format(session.userInfo.registerDate,'yyyy-MM-dd')}">2000.1.1</div></li>
+            <li class="list-group-item"><button href="/Modify" class="btn btn-success">修改</button> </li>
         </ul>
     </div>
 </div>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -62,9 +63,9 @@
                         </form>
                     </li>
                 </ul>
-                <img src="img/tag/default.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
-                <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
-                <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>
+                <img class="rounded-circle "  th:src="@{/img/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+                <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
+                <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
             </div>
         </nav>
 

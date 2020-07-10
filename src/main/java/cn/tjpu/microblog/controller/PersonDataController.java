@@ -24,13 +24,6 @@ public class PersonDataController {
 
     @GetMapping("/personalData")
     public ModelAndView getPersonalData(ModelAndView modelAndView, HttpSession session) {
-        User user = (User) session.getAttribute("userInfo");
-        modelAndView.setViewName("PersonalData");
-        modelAndView.addObject("username", user.getUsername());
-        modelAndView.addObject("nickname", user.getNickname());
-        modelAndView.addObject("email", user.getEmail());
-        modelAndView.addObject("birthday", user.getBirthday());
-        modelAndView.addObject("registerDate", user.getRegisterDate());
         return modelAndView;
     }
 }
