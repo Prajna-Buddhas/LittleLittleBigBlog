@@ -27,7 +27,7 @@ class IndexMapperTest {
     public void getIndexRecommend(){
        Blog blog = new Blog();
 
-       List<Blog> list = indexMapper.getIndexRecommend(blog);
+       List<Blog> list = indexMapper.getIndexRecommend();
        assert list.size() == 2;
 
    }

@@ -57,7 +57,8 @@ public class ViewBlogService {
             if (log.isInfoEnabled())
                 log.info("can't find user by userId{}", comment.getUserId());
         }   else {
-            commentMap.put("user", getUserByComment(comment.getUserId())) ;
+            commentMap.put("username", getUserByComment(comment.getUserId()).get(0).getUsername()) ;
+            commentMap.put("avatarId",getUserByComment(comment.getUserId()).get(0).getAvatarId());
             commentMap.put("comment",comment);
         }
             return commentMap;

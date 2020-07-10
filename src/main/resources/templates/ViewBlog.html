@@ -9,6 +9,8 @@
     <script crossorigin="anonymous"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
     <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link href="/css/ViewBlog.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
@@ -28,19 +30,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">主页 <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/index">主页 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
-                <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
-                   href="#"
-                   id="navbarDropdown" role="button">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     标签
                 </a>
-                <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                    <a class="dropdown-item" href="#">美食</a>
-                    <a class="dropdown-item" href="#">电影</a>
-                    <a class="dropdown-item" href="#">游戏</a>
-                    <a class="dropdown-item" href="#">音乐</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/tag/1">美食</a>
+                    <a class="dropdown-item" href="/tag/2">电影</a>
+                    <a class="dropdown-item" href="/tag/3">游戏</a>
+                    <a class="dropdown-item" href="/tag/4">音乐</a>
                 </div>
             </li>
             <li class="nav-item">
@@ -63,7 +63,7 @@
 </a>
 
 <!--发表博客-->
-<a href="">
+<a href="/publish">
     <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
         <img src="/img/publish.png" style="width: auto; height: auto; margin-top: 0.2rem" alt="...">
     </div>
@@ -207,11 +207,11 @@
                     "                        <!--评论头像-->\n" +
                     "                        <div class=\"card-header\">\n" +
                     "                            <div style=\"display: inline;border-radius :50%; width: 2rem;height: 2rem\">\n" +
-                    "                                <img alt=\"...\" src=\"/image/blogImg/" + value.user.avatarId + "\"\n" +
+                    "                                <img alt=\"...\" src=\"/image/avatar/" +value.avatarId  + "\"\n" +
                     "                                     style=\"border-radius :50%; width: 2rem;height: 2rem\">\n" +
                     "                            </div>\n" +
                     "                            <div style=\"display: inline;margin-left: 1rem;width: 2rem;height: 2rem\">\n" +
-                    "                                <p style=\"display: inline; font-size: 14px\">" + value.user.username + "</p>\n" +
+                    "                                <p style=\"display: inline; font-size: 14px\">"+ value.username + "</p>\n" +
                     "                            </div>\n" +
                     "                            <div style=\"display: inline; margin-left: 22rem;width: 2rem;height: 2rem\">\n" +
                     "                                <p style=\"display: inline; font-size: 14px;opacity: 0.5 \">" + str + "</p>\n" +
@@ -270,7 +270,7 @@
         success: function (data) {
             let html = "";
             $.each(data, function (index,value) {
-                html += " <div class=\"card mb-3\">\n" +
+                html += " <a style='text-decoration: none;color: #616467' href=\"/blog/"+ value.blogId +"\"><div class=\"card mb-3\">\n" +
                     "                <div class=\"row no-gutters\">\n" +
                     "                    <div class=\"col-md-4\">\n" +
                     "                        <img alt=\"...\"  class=\"card-img\" src=\"/image/blogImg/" + value.blogPhoto + "\" style=\"height: 100%\">\n" +
@@ -281,7 +281,7 @@
                     "                        </div>\n" +
                     "                    </div>\n" +
                     "                </div>\n" +
-                    "            </div>"
+                    "            </div></a>"
             })
             $("#addRecommend").html(html)
         }
