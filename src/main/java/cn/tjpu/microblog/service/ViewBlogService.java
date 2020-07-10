@@ -3,10 +3,12 @@ package cn.tjpu.microblog.service;
 import cn.tjpu.microblog.dao.ViewBlogMapper;
 import cn.tjpu.microblog.domain.Blog;
 import cn.tjpu.microblog.domain.Comment;
+import cn.tjpu.microblog.domain.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,5 +76,10 @@ public class ViewBlogService {
 
     public String getAuthorName(Integer authorId) {
         return viewBlogMapper.getAuthorName(authorId);
+    }
+
+    public void publishComment(Comment comment, HttpSession session) {
+        User user = (User) session.getAttribute("userInfo");
+        viewBlogMapper.publishComment(comment);
     }
 }

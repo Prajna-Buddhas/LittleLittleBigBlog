@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +27,12 @@ public class ViewBlogController {
     @Resource
     ViewBlogService service;
 
+
     @GetMapping("/blog/{id}")
     public ModelAndView ViewBlog(@PathVariable("id") Integer blogId, ModelAndView modelAndView) {
         modelAndView.setViewName("ViewBlog");
         Blog blog = service.getBlog(blogId);
-        String author = service.getAuthorName(blogId);
+        String author = service.getAuthorName(blog.getAuthorId());
         modelAndView.addObject("blog", blog);
         modelAndView.addObject("author", author);
         return modelAndView;
@@ -55,5 +57,11 @@ public class ViewBlogController {
         Blog blog = new Blog();
         blog.setBlogId(blogId);
         return service.getRecommend(blog);
+    }
+
+    @PostMapping("/blog/{id}/publishBlog")
+    public String publishBlog(@PathVariable Integer id, Comment comment, HttpSession session) {
+        service.publishComment(comment, session);
+        return "redirect:/blog/"+id;
     }
 }

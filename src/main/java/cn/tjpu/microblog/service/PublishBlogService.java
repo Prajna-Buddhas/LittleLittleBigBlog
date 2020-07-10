@@ -1,13 +1,19 @@
 package cn.tjpu.microblog.service;
 
+
 import cn.tjpu.microblog.dao.PublishBlogMapper;
 import cn.tjpu.microblog.domain.Blog;
+import cn.tjpu.microblog.domain.User;
+import cn.tjpu.microblog.util.FileUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.jdbc.Null;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * @author 陈沿儒
@@ -20,14 +26,22 @@ public class PublishBlogService {
     @Resource
     private PublishBlogMapper publishBlogMapper;
 
-    public void PublishBlog(Blog blog , HttpSession session) {
-        Integer integer = (Integer) session.getAttribute("userId");
-//        blog.setAuthorId(integer);
+    public String saveBlogImg(MultipartFile file) throws IOException {
+        return FileUtil.saveImg(file, FileUtil.BLOGIMG);
+    }
+
+
+    public void publishBlog(Blog blog , MultipartFile file, HttpSession session) throws IOException {
         if ("".equals(blog.getTitle()) || "".equals(blog.getContent())) {
             if (log.isInfoEnabled())
                 log.info("can't publish blog");
                 throw new RuntimeException("can't publish blog ");
         } else {
+            User user = (User) session.getAttribute("userInfo");
+
+            blog.setAuthorId(user.getUserId());
+            String blogImg = saveBlogImg(file);
+            blog.setBlogPhoto(blogImg);
             publishBlogMapper.publishBlog(blog);
         }
     }

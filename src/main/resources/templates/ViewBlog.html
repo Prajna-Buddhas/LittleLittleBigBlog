@@ -52,7 +52,7 @@
         </ul>
         <img alt="Head portrait" class="rounded-circle " src="img/default.png"
              style="height: 40px;width: 40px">
-        <a class="nav-link navbar-text" href="login.html">登录<span class="sr-only">(current)</span></a>/
+        <a class="nav-link navbar-text" href="../static/login.html">登录<span class="sr-only">(current)</span></a>/
         <a class="nav-link navbar-text" href="register.html">注册<span class="sr-only">(current)</span></a>
     </div>
 </nav>
@@ -98,7 +98,7 @@
                     </p>
                     <!--正文图片-->
                     <img alt="Card image" class="card-img-bottom"
-                         src="/img/ViewBlog/lgm.jpg" style="width: 60%; height:30% ">
+                         th:src="@{/image/blogImg/}+${blog.blogPhoto}" style="width: 60%; height:30% ">
                 </div>
             </li>
             <!--点赞，阅读量，评论数-->
@@ -150,6 +150,7 @@
 
                 <!--发表评论-->
                 <li class="list-group-item">
+                    <form method="post" th:action="'/blog/'+${blog.blogId}+'/publishBlog'">
                     <div class="form-group">
                         <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
                             <img alt="..." src="/img/default.png"
@@ -166,6 +167,7 @@
                             发表评论
                         </button>
                     </div>
+                    </form>
                 </li>
                 <p>
                     <br>

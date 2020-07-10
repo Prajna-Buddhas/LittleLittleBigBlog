@@ -39,7 +39,7 @@
                 </form>
             </li>
         </ul>
-        <img src="img/default.png" style="height: 40px;width: 40px" class="rounded-circle ">
+        <img src="../static/img/default.png" style="height: 40px;width: 40px" class="rounded-circle ">
         <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
         <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>
     </div>
@@ -47,7 +47,8 @@
 
 <div class="card" style="margin: 2% 10% 10%;padding: 5%">
     <h1 style="color: rgba(0,20,5,0.68)">发布</h1>
-    <form action="/publish" method="post" id="publish">
+
+    <form action="/publish" enctype="multipart/form-data" method="post" id="publish">
         <ul class="list-group" style="list-style: none">
             <li ><div><label>
                 <input id="title" type="text" name="title" class="form-control" placeholder="请输入标题">
@@ -80,11 +81,11 @@
             </div></li>
             <li>
                 <div class="div_model">
-                    <img id="cropedBigImg0" style="width: 10rem;height: 10rem" src="img/publish/upload.jpg" class="div_model_img"/>
+                    <img id="cropedBigImg0" style="width: 10rem;height: 10rem" src="../static/img/publish/upload.jpg" class="div_model_img" alt="blogImg"/>
                 </div>
             </li><br>
             <li>
-                <input type="file"class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg"id="chooseImage0">
+                <input type="file" name="uploadBlogImg" class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg" onchange="" id="chooseImage0">
             </li><br>
             <li>
                 <div id="alert" style="display: none" class="alert alert-danger" role="alert">
@@ -110,6 +111,8 @@
         }
         reader.readAsDataURL(file);
     }
+
+
 
     function contentLoaded() {
         document.getElementById('chooseImage0').addEventListener('change',

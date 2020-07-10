@@ -4,10 +4,14 @@ import cn.tjpu.microblog.domain.Blog;
 import cn.tjpu.microblog.service.PublishBlogService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+
 
 /**
  * @author 陈沿儒
@@ -18,11 +22,13 @@ import javax.servlet.http.HttpSession;
 public class PublishBlogController {
 
     @Resource
+
     PublishBlogService publishBlogService;
 
     @PostMapping("/publish")
-    public String PublishBlog(Blog blog , HttpSession session) {
-        publishBlogService.PublishBlog(blog,session);
-        return "redirect:/index.html";
+    public String PublishBlog(Blog blog , @RequestParam("uploadBlogImg")MultipartFile file, HttpServletRequest request) throws IOException {
+        publishBlogService.publishBlog(blog,file,request.getSession());
+        return "redirect:/index";
     }
+
 }
