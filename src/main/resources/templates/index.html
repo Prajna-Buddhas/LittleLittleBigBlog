@@ -5,7 +5,7 @@
 		 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport">
-	<script crossorigin="anonymous" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
     <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script crossorigin="anonymous" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
     <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" rel="stylesheet">
@@ -116,6 +116,7 @@
                 let html = "";
                 $.each(data, function (index, value) {
                     var con= value.content.toString().substr(0,150)
+                    var dat= value.releaseDate.toString().substr(0,10)
 
                     html += "<div align=\"center\" class=\"animate__bounce\" >\n" +
                         "                <div class=\"card mb-3 \" style=\"max-width: 56rem;border-radius: 2rem;margin-top: 9rem\">\n" +
@@ -128,7 +129,7 @@
                         "                                <h5 class=\"card-title\" >"+ value.title + "</h5>\n" +
                         "                                <p class=\"card-text\" >"+ con +"</p>\n" +
                         "                                <p class=\"card-text\"><small class=\"text-muted\"\n" +
-                        "                                                           >"+ value.releaseData +"</small></p>\n" +
+                        "                                                           >"+ dat +"</small></p>\n" +
                         "                            </div>\n" +
                         "                        </div>\n" +
                         "                    </div>\n" +
