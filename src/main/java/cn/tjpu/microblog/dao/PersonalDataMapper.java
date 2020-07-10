@@ -22,6 +22,6 @@ public interface PersonalDataMapper {
     @Select(" SELECT * FROM microblog_user WHERE user_id = #{userId} ")
     List<User> getUser(User user);
 
-    @Update("UPDATE microblog_user SET nickname = #{nickname}, username = #{username}, email = #{email}, birthday = #{birthday} WHERE user_id = #{userId};")
+    @Update("UPDATE microblog_user SET nickname = #{nickname}, username = #{username}, email = #{email}, birthday = #{birthday}, avatar_id = #{avatarId} WHERE user_id = #{userId};")
     Integer updateByUserId(User user);
 }

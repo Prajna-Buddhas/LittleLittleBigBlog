@@ -45,19 +45,19 @@ public class ViewBlogService {
     }
 
     //通过评论的userId获取username
-    public String getUsernameByComment(Integer userId) {
-        return viewBlogMapper.getUsernameByComment(userId);
+    public List<User> getUserByComment(Integer userId) {
+        return viewBlogMapper.getUserByComment(userId);
     }
 
     public Map<String, Object> commentConstructor(Comment comment) {
         Map<String, Object> commentMap = new HashMap<>();
-        String username = getUsernameByComment(comment.getUserId());
+        String username = getUserByComment(comment.getUserId()).get(0).getUsername();
 
         if ("".equals(username) || username == null) {
             if (log.isInfoEnabled())
                 log.info("can't find user by userId{}", comment.getUserId());
         }   else {
-            commentMap.put("username", getUsernameByComment(comment.getUserId())) ;
+            commentMap.put("user", getUserByComment(comment.getUserId())) ;
             commentMap.put("comment",comment);
         }
             return commentMap;

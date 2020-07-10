@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>修改个人资料</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
@@ -40,9 +41,8 @@
                 </form>
             </li>
         </ul>
-        <img src="img\default.png" style="height: 40px;width: 40px" class="rounded-circle ">
-        <a class="nav-link navbar-text" href="#" >登录<span class="sr-only">(current)</span></a>/
-        <a class="nav-link navbar-text" href="#" >注册<span class="sr-only">(current)</span></a>
+        <img th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px" class="rounded-circle ">
+        <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
     </div>
 </nav>
 
@@ -51,13 +51,13 @@
         <h1 style="margin-left: 5%;color: #f2fcf7;margin-top: 3rem">个人资料</h1>
     </div>
     <div style="margin-left: 5%;z-index: 1;float: left">
-        <img id="avatarId" src="../static/img/default.png" style="margin-top: -2.5rem;width: 5rem;height:5rem;display:inline" class="rounded-circle">
+        <img id="avatarId" th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="margin-top: -2.5rem;width: 5rem;height:5rem;display:inline" class="rounded-circle">
         <h5 style="display:inline;margin-top: 2.5rem"></h5>
-        <br><br>
-        <input id="choose_avatar" type="file" name="uploadBlogImg" class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg">
     </div>
     <div style="margin: 5%">
-        <form action="/ModifyData" method="post">
+        <form action="/ModifyData" enctype="multipart/form-data" method="post">
+            <input id="choose_avatar" type="file" name="uploadAvatarImg" class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg">
+<br>
             <ul class="list-group">
                 <li class="list-group-item"><div>用户名</div><div><input name="username" th:value="${session.userInfo.getUsername()}" type="text" style="font-size: 15px"></div></li>
                 <li class="list-group-item"><div>昵称</div><div><input th:value="${session.userInfo.getNickname()}" name="nickname" type="text"></div></li>

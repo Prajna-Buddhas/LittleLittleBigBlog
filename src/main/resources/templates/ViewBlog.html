@@ -9,7 +9,7 @@
     <script crossorigin="anonymous"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
             src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <link href="/css/ViewBlog.css" rel="stylesheet" type="text/css">
     <link href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
     <title th:text="${blog.title}">loading</title>
@@ -50,8 +50,7 @@
                 </form>
             </li>
         </ul>
-        <img class="rounded-circle "  th:src="@{/img/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
-        <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
+        <img class="rounded-circle "  th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
         <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
     </div>
 </nav>
@@ -152,11 +151,11 @@
                     <form method="post" th:action="'/blog/'+${blog.blogId}+'/publishBlog'">
                     <div class="form-group">
                         <div style="display: inline;border-radius :50%; width: 2rem;height: 2rem">
-                            <img alt="..." src="/img/default.png"
+                            <img alt="..." th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}"
                                  style="border-radius :50%; width: 2rem;height: 2rem">
                         </div>
                         <div style="display: inline;margin-left: 1rem;width: 2rem;height: 2rem">
-                            <p th:text="${session.userInfo.username}" style="display: inline; font-size: 14px">嘤嘤怪</p>
+                            <p th:text="${session.userInfo.nickname}" style="display: inline; font-size: 14px">嘤嘤怪</p>
                         </div>
 
                         <textarea class="form-control" name="commentContent" id="comment" rows="3" style="margin-top: 1rem"></textarea>
@@ -208,11 +207,11 @@
                     "                        <!--评论头像-->\n" +
                     "                        <div class=\"card-header\">\n" +
                     "                            <div style=\"display: inline;border-radius :50%; width: 2rem;height: 2rem\">\n" +
-                    "                                <img alt=\"...\" src=\"/img/ViewBlog/stwb.png\"\n" +
+                    "                                <img alt=\"...\" src=\"/image/blogImg/" + value.user.avatarId + "\"\n" +
                     "                                     style=\"border-radius :50%; width: 2rem;height: 2rem\">\n" +
                     "                            </div>\n" +
                     "                            <div style=\"display: inline;margin-left: 1rem;width: 2rem;height: 2rem\">\n" +
-                    "                                <p style=\"display: inline; font-size: 14px\">" + value.username + "</p>\n" +
+                    "                                <p style=\"display: inline; font-size: 14px\">" + value.user.username + "</p>\n" +
                     "                            </div>\n" +
                     "                            <div style=\"display: inline; margin-left: 22rem;width: 2rem;height: 2rem\">\n" +
                     "                                <p style=\"display: inline; font-size: 14px;opacity: 0.5 \">" + str + "</p>\n" +

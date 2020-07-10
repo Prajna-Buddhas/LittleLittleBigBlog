@@ -2,6 +2,7 @@ package cn.tjpu.microblog.dao;
 
 import cn.tjpu.microblog.domain.Blog;
 import cn.tjpu.microblog.domain.Comment;
+import cn.tjpu.microblog.domain.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -38,8 +39,8 @@ public interface ViewBlogMapper {
     @Update("UPDATE microblog_blog SET likes =likes -1 WHERE blog_id=#{blogId}")
     Integer reduceLike(Blog blog);
 
-    @Select("SELECT username FROM microblog_user WHERE user_id = #{userId}")
-    String getUsernameByComment(Integer userId);
+    @Select("SELECT * FROM microblog_user WHERE user_id = #{userId}")
+    List<User> getUserByComment(Integer userId);
 
     @Select("SELECT username FROM microblog_user WHERE user_id = #{authorId}")
     String getAuthorName(Integer authorId);

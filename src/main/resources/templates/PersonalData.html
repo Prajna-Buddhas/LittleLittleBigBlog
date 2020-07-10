@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
     <title>个人资料</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
@@ -40,8 +41,7 @@
                 </form>
             </li>
         </ul>
-        <img class="rounded-circle "  th:src="@{/img/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
-        <img class="rounded-circle " th:unless="${session.userInfo.getAvatarId()} != null" src="/img/default.png" style="height: 40px;width: 40px">
+        <img class="rounded-circle "  th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
         <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
     </div>
 </nav>
@@ -51,16 +51,16 @@
     <h1 style="margin-left: 5%;color: #f2fcf7;margin-top: 3rem">个人资料</h1>
     </div>
     <div style="margin-left: 5%;z-index: 1;float: left">
-        <img src="/img/default.png" style="margin-top: -2.5rem;width: 5rem;height:5rem;display:inline" class="rounded-circle">
-        <h5 style="display:inline;margin-top: 2.5rem">用户名称</h5>
+        <img th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="margin-top: -2.5rem;width: 5rem;height:5rem;display:inline" class="rounded-circle">
+        <h5 th:text="${session.userInfo.username}" style="display:inline;margin-top: 2.5rem">loading</h5>
     </div>
     <div style="margin: 5%">
         <ul class="list-group">
-            <li class="list-group-item"><div>用户名</div><div th:text="${session.userInfo.nickname}">nickname</div></li>
+            <li class="list-group-item"><div>昵称</div><div th:text="${session.userInfo.nickname}">nickname</div></li>
             <li class="list-group-item"><div>电子邮箱</div><div th:text="${session.userInfo.email}">email@gmail.com</div></li>
             <li class="list-group-item"><div>生日</div><div th:text="${#dates.format(session.userInfo.birthday,'yyyy-MM-dd')}" >2000.1.1</div></li>
             <li class="list-group-item"><div>注册日期</div><div th:text="${#dates.format(session.userInfo.registerDate,'yyyy-MM-dd')}">2000.1.1</div></li>
-            <li class="list-group-item"><button href="/Modify" class="btn btn-success">修改</button> </li>
+            <li class="list-group-item"><button onclick="window.open('/Modify')" class="btn btn-success">修改</button> </li>
         </ul>
     </div>
 </div>

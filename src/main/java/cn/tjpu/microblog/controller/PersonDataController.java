@@ -7,10 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 /**
  * 个人数据页面
@@ -28,8 +31,8 @@ public class PersonDataController {
     PersonalDataService personalDataService;
 
     @GetMapping("/personalData")
-    public ModelAndView getPersonalData(ModelAndView modelAndView, HttpSession session) {
-        return modelAndView;
+    public String getPersonalData(ModelAndView modelAndView, HttpSession session) {
+        return "PersonalData";
     }
 
     @GetMapping("/Modify")
@@ -38,10 +41,10 @@ public class PersonDataController {
     }
 
     @PostMapping("/ModifyData")
-    public String updateData (User user,HttpSession session) {
+    public String updateData (User user, HttpSession session , @RequestParam("uploadAvatarImg")MultipartFile file) throws IOException {
         User user1 = (User) session.getAttribute("userInfo");
         user.setUserId(user1.getUserId());
-        personalDataService.updateData(user);
+        personalDataService.updateData(user, file);
         return "redirect:/personalData";
     }
 }
