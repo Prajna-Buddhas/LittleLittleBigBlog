@@ -60,7 +60,8 @@
             <li class="list-group-item"><div>电子邮箱</div><div th:text="${session.userInfo.email}">email@gmail.com</div></li>
             <li class="list-group-item"><div>生日</div><div th:text="${#dates.format(session.userInfo.birthday,'yyyy-MM-dd')}" >2000.1.1</div></li>
             <li class="list-group-item"><div>注册日期</div><div th:text="${#dates.format(session.userInfo.registerDate,'yyyy-MM-dd')}">2000.1.1</div></li>
-            <li class="list-group-item"><button onclick="window.open('/Modify')" class="btn btn-success">修改</button> </li>
+            <li class="list-group-item"><button onclick="window.open('/Modify')" class="btn btn-success">修改</button>
+            <button onclick="window.open('/logOut')" class="btn btn-danger">注销登录</button></li>
         </ul>
     </div>
 </div>
