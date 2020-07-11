@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	
 <head>
 		 <!-- Required meta tags -->
@@ -75,16 +75,16 @@
 				<div class="carousel slide carousel-fade" data-ride="carousel" id="carouselExampleFade" style="height: 18rem;width: 48rem" >
                     <div class="carousel-inner" style="height: 18rem;">
                 <div class="carousel-item active">
-                    <img alt="..." class="d-block w-100" src="img/index/bg.jpg">
+                    <a href="/tag/1"><img alt="..." class="d-block w-100" src="img/index/bg.jpg"></a>
                 </div>
                 <div class="carousel-item">
-                    <img alt="..." class="d-block w-100" src="img/index/movie.PNG">
+                    <a href="/tag/2"><img alt="..." class="d-block w-100" src="img/index/movie.PNG"></a>
                 </div>
                 <div class="carousel-item">
-                    <img alt="..." class="d-block w-100" src="img/index/game.jpg">
+                    <a href="/tag/3"><img alt="..." class="d-block w-100" src="img/index/game.jpg"></a>
                 </div>
                 <div class="carousel-item">
-                    <img alt="..." class="d-block w-100" src="img/index/music.jpg">
+                    <a href="/tag/4"><img alt="..." class="d-block w-100" src="img/index/music.jpg"></a>
                 </div>
              </div>
                     <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleFade" role="button">
@@ -122,10 +122,10 @@
 
                     html += "<a style='text-decoration: none;color: #616467' href=\"/blog/"+ value.blogId +"\">" +
                         "<div align=\"center\" class=\"animate__bounce\" >\n" +
-                        "                <div class=\"card mb-3 \" style=\"max-width: 56rem;border-radius: 2rem;margin-top: 7rem\">\n" +
+                        "                <div class=\"card mb-3 \" style=\"max-width: 56rem;max-height:15rem;border-radius: 1rem;margin-top: 7rem\">\n" +
                         "                    <div class=\"row no-gutters\">\n" +
                         "                        <div class=\"col-md-4\">\n" +
-                        "                            <img alt=\"...\" class=\"card-img\" style=\"height: 100%; border-radius: 2rem 0.25rem  0.25rem 2rem\" src=\"/image/blogImg/" + value.blogPhoto + "\" >\n" +
+                        "                            <img alt=\"...\" class=\"card-img\" style=\"height: 100%;max-height: 15rem; border-radius: 1rem 0 0 1rem\" src=\"/image/blogImg/" + value.blogPhoto + "\" >\n" +
                         "                        </div>\n" +
                         "                        <div class=\"col-md-8\">\n" +
                         "                            <div class=\"card-body\">\n" +

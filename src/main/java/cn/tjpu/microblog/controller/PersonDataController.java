@@ -47,4 +47,10 @@ public class PersonDataController {
         personalDataService.updateData(user, file);
         return "redirect:/personalData";
     }
+
+    @GetMapping("/logOut")
+    public String logOut(HttpSession session) {
+        session.removeAttribute("userInfo");
+        return "/index";
+    }
 }
