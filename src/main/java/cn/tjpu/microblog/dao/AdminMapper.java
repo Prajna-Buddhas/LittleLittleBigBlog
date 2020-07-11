@@ -33,7 +33,7 @@ public interface AdminMapper {
     @Update("UPDATE microblog_user SET password = #{password}, nickname = #{nickname}, username = #{username}, email = #{email}, birthday = #{birthday}, avatar_id = #{avatarId} WHERE user_id = #{userId};")
     Integer updateUser(User user);
 
-    @Select("SELECT * FROM microblog_user WHERE username = #{username} AND admin = 1;")
+    @Select("SELECT * FROM microblog_user WHERE username = #{username}")
     List<User> adminLogin(User user);
 
     @Delete("DELETE FROM microblog_blog WHERE blog_id = #{blogId};")
