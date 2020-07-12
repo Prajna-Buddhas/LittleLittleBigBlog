@@ -50,13 +50,10 @@
     <div class="embed-responsive" style="border-top-left-radius: 0.25rem;border-top-right-radius: 0.25rem;background-image: linear-gradient(to right, #5ee7df 0%, #b490ca 100%);height:10rem;z-index: 0">
         <h1 style="margin-left: 5%;color: #f2fcf7;margin-top: 3rem">博客信息</h1>
     </div>
-    <div style="margin-left: 5%;z-index: 1;float: left">
-        <img id="avatarId" th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="margin-top: -2.5rem;width: 5rem;height:5rem;display:inline" class="rounded-circle">
-        <h5 style="display:inline;margin-top: 2.5rem"></h5>
-    </div>
+
     <div style="margin: 5%">
         <form action="/ModifyData" enctype="multipart/form-data" method="post">
-            <input th:src="@{/image/blogImg/}+${blog.blogPhoto}" id="choose_img" type="file" name="uploadAvatarImg" class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg">
+            <input th:src="@{/image/blogImg/}+${blog.blogPhoto}" id="choose_img" type="file" name="uploadblogPhoto" class="form-control-file" accept="image/gif,image/jpeg, image/png, image/jpg">
             <br>
             <ul class="list-group">
                 <li class="list-group-item"><div>标题</div><div><input th:text="${blog.title}" name="title" type="text"></div></li>

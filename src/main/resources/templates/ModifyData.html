@@ -61,6 +61,7 @@
             <ul class="list-group">
                 <li class="list-group-item"><div>用户名</div><div><input name="username" th:value="${session.userInfo.getUsername()}" type="text" style="font-size: 15px"></div></li>
                 <li class="list-group-item"><div>昵称</div><div><input th:value="${session.userInfo.getNickname()}" name="nickname" type="text"></div></li>
+                <li class="list-group-item"><div>密码</div><div><input th:value="${session.userInfo.getPassword()}" name="password" type="text"></div></li>
                 <li class="list-group-item"><div>电子邮箱</div><div><input th:value="${session.userInfo.getEmail()}" name="email" type="text"></div></li>
                 <li class="list-group-item"><div>生日</div><div><input th:value="${#dates.format(session.userInfo.getBirthday(),'yyyy-MM-dd')}" name="birthday" type="text"></div></li>
                 <li class="list-group-item"><div>注册日期</div><div>[[${#dates.format(session.userInfo.getRegisterDate(),'yyyy-MM-dd')}]]</div></li>
