@@ -105,10 +105,12 @@
                 <td class="con" th:text="${blog.tagId}">*</td>
                 <td class="con" th:text="${blog.likes}">*</td>
                 <td class="con" th:text="${blog.pageviews}">*</td>
-                <td class="con" th:text="${blog.releaseData}">*</td>
+                <td class="con" th:text="${blog.releaseDate}">*</td>
                 <td class="con" th:text="${blog.commentCount}">*</td>
                 <td class="con" th:text="${blog.blogPhoto}">*</td>
-                <td><button type="button" class="btn btn-outline-danger">删除</button></td>
+                <td><a href="ModifyBlog.html"> <button type="button" class="btn btn-outline-info">修改</button></a></td>
+                <td><button type="button" class="btn btn-outline-danger" >删除</button></td>
+
             </tr>
             </tbody>
         </table>
