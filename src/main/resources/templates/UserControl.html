@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" name="viewport">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+
+    <!--Animate.css-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css" rel="stylesheet"/>
+
+    <title>用户管理</title>
+
+
+
+
+</head>
+<body style="background-color: #F5F5F5;">
+<div>
+
+    <div>
+
+        <!--顶部导航栏-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="top" style="background:#BEDEC9">
+            <a class="navbar-brand" href="index.html">LittleLittle BigBlog</a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" >见微知著后台管理 <span class="sr-only">(current)</span></a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+                            管理
+                        </a>
+                        <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+                            <a class="dropdown-item" href="AdminControl.html">用户管理</a>
+                            <a class="dropdown-item" href="">动态管理</a>
+
+                        </div>
+                    </li>
+
+                </ul>
+                <img class="rounded-circle " th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+                <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
+            </div>
+        </nav>
+
+
+
+        <a href="#top">
+            <div style="box-shadow: 3px 4px 4px rgba(10,16,20,0.24),0 0 8px rgba(10,16,20,0.12);text-decoration: none;border-radius: 50%;background: #A79EAF;width: 3.5rem; height: 3.5rem; bottom: 4rem;right: 9rem; position: fixed; text-align: center">
+                <img src="img/ToTop.png" style="width: auto; height: auto; margin-top: 0.2rem">
+            </div>
+        </a>
+        <!--发表博客-->
+        <a href="/publish">
+            <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
+                <img src="img/publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
+            </div>
+        </a>
+    </div>
+    <!--内容-->
+
+   >
+    <div align="center" class="animate__bounce" >
+    <div class="card mb-3 " style="max-width: 56rem;max-height:15rem;border-radius: 1rem;margin-top: 7rem;display:inline-block;">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img alt="..." class="card-img" style="height: 100%;max-height: 15rem; border-radius: 1rem 0 0 1rem" src="img/index/saber.jpg"  >
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+</div>
+
+
+
+
+</body>
+</html>
