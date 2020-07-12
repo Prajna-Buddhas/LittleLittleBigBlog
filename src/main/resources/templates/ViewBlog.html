@@ -213,7 +213,7 @@
                     "                                     style=\"border-radius :50%; width: 2rem;height: 2rem\">\n" +
                     "                            </div>\n" +
                     "                            <div style=\"display: inline;margin-left: 1rem;width: 2rem;height: 2rem\">\n" +
-                    "                                <p style=\"display: inline; font-size: 14px\">"+ value.username + "</p>\n" +
+                    "                                <p style=\"display: inline; font-size: 14px\">"+ value.nickname + "</p>\n" +
                     "                            </div>\n" +
                     "                            <div style=\"display: inline; margin-left: 22rem;width: 2rem;height: 2rem\">\n" +
                     "                                <p style=\"display: inline; font-size: 14px;opacity: 0.5 \">" + str + "</p>\n" +
@@ -272,7 +272,7 @@
         success: function (data) {
             let html = "";
             $.each(data, function (index,value) {
-                html += " <a style='text-decoration: none;color: #616467' href=\"/blog/"+ value.blogId +"\"><div class=\"card mb-3\">\n" +
+                html += " <a style='text-decoration: none;color: #616467' href=\"/blog/"+ value.blogId +"\"><div class=\"card mb-3\" >\n" +
                     "                <div class=\"row no-gutters\">\n" +
                     "                    <div class=\"col-md-4\">\n" +
                     "                        <img alt=\"...\"  class=\"card-img\" src=\"/image/blogImg/" + value.blogPhoto + "\" style=\"height: 100%\">\n" +

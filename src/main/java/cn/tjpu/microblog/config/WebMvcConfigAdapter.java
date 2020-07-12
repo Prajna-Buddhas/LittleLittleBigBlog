@@ -1,5 +1,6 @@
 package cn.tjpu.microblog.config;
 
+import cn.tjpu.microblog.component.AdminLoginHandleInterception;
 import cn.tjpu.microblog.component.LoginHandleInterception;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,6 +23,9 @@ public class WebMvcConfigAdapter implements WebMvcConfigurer {
     @Resource
     LoginHandleInterception loginHandleInterception;
 
+    @Resource
+    AdminLoginHandleInterception adminLoginHandleInterception;
+
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/image/avatar/**").addResourceLocations("file:/E:/Practice/avatar/");
@@ -31,6 +35,10 @@ public class WebMvcConfigAdapter implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginHandleInterception).addPathPatterns("/**")
-                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**");
+                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
+
+//        registry.addInterceptor(adminLoginHandleInterception).addPathPatterns("/admin/**")
+//                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
+
     }
 }
