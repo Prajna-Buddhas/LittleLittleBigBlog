@@ -42,7 +42,7 @@
                                     标签
                                 </a>
                                 <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-                                    <a class="dropdown-item" href="/tag/1">美食</a>
+                                    <a class="dropdown-item" href="AdminBlog.html">美食</a>
                                     <a class="dropdown-item" href="/tag/2">电影</a>
                                     <a class="dropdown-item" href="/tag/3">游戏</a>
                                     <a class="dropdown-item" href="/tag/4">音乐</a>
@@ -122,21 +122,25 @@
 
                     html += "<a style='text-decoration: none;color: #616467' href=\"/blog/"+ value.blogId +"\">" +
                         "<div align=\"center\" class=\"animate__bounce\" >\n" +
-                        "                <div class=\"card mb-3 \" style=\"max-width: 56rem;max-height:15rem;border-radius: 1rem;margin-top: 7rem\">\n" +
+                        "                <div class=\"card mb-3 \" style=\"max-width: 56rem;max-height:15rem;border-radius: 1rem;margin-top: 7rem;\">\n" +
                         "                    <div class=\"row no-gutters\">\n" +
                         "                        <div class=\"col-md-4\">\n" +
                         "                            <img alt=\"...\" class=\"card-img\" style=\"height: 100%;max-height: 15rem; border-radius: 1rem 0 0 1rem\" src=\"/image/blogImg/" + value.blogPhoto + "\" >\n" +
                         "                        </div>\n" +
                         "                        <div class=\"col-md-8\">\n" +
                         "                            <div class=\"card-body\">\n" +
+
                         "                                <h5 class=\"card-title\" >"+ value.title + "</h5>\n" +
+
                         "                                <p class=\"card-text\" >"+ con +"</p>\n" +
                         "                                <p class=\"card-text\"><small class=\"text-muted\"\n" +
                         "                                                           >"+ dat +"</small></p>\n" +
                         "                            </div>\n" +
                         "                        </div>\n" +
-                        "                    </div>\n" +
+
+                        "                    </div>"+
                         "                </div>\n" +
+
                         "\t\t\t</div>"
                         +"</a>"
                 })
