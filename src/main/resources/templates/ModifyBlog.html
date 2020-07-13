@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <title>修改博客</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body style="background: #F5F5F5">
+<nav class="navbar navbar-expand-lg navbar-light" style="background:#BEDEC9">
+    <a class="navbar-brand" href="index.html">LittleLittle BigBlog</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#" >主页 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    标签
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/AdminControl" >用户管理</a>
+                    <a class="dropdown-item" href="/AdminBlog">博客管理</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="card" style="margin: 2% 10% 10%;padding: 5%">
+    <h1 style="color: rgba(0,20,5,0.68)">修改Blog</h1>
+
+    <form action="/ModifyBlog" enctype="multipart/form-data" method="post" id="publish">
+        <ul class="list-group" style="list-style: none">
+            <li ><div><label>
+                <input id="title" type="text" name="title" class="form-control" th:value="${userInfo2.title}">
+            </label></div></li>
+            <li >
+                <div><label>
+                <textarea id="content" name="content" class="form-control" style="width: 100%;overflow: auto;
+        word-break: break-all;" cols="70" rows="10" th:value="${userInfo2.content}"></textarea>
+                </label>
+                </div></li><li>
+            <li class="list-group-item">
+                <div>BlogPhoto</div>
+                <div><input th:value="${userInfo2.blogPhoto}" name="avatarId" type="text"></div>
+            </li>
+            选择分区
+        </li>
+            <li><div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="1" checked> 美食
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="2"> 电影
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="3"> 音乐
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="4"> 游戏
+                </label>
+            </div></li>
+            <li>
+
+            <li>
+                <div id="alert" style="display: none" class="alert alert-danger" role="alert">
+                    请填写完所有内容！
+                </div>
+            </li><br>
+            <input hidden th:value="${userInfo2.blogId}" name="blogId">
+            <li><button type="button" id="submits" value="put" name="_method" class="btn btn-info">修改</button></li>
+        </ul>
+    </form>
+</div>
+<script>
+    //图片上传到浏览器并显示
+    function ProcessFile(e) {
+        const reader = new FileReader();
+        const file = document.getElementById('chooseImage0').files[0];
+        console.log(file);
+        if (file) {
+            reader.onload = function (event) {
+                const txt = event.target.result;
+                $("#cropedBigImg0").attr('src', txt);//将图片base64字符串赋值给img的src
+                //console.log(txt)//base64
+            };
+        }
+        reader.readAsDataURL(file);
+    }
+
+
+
+    function contentLoaded() {
+        document.getElementById('chooseImage0').addEventListener('change',
+            ProcessFile, false);
+    }
+
+    // var model=document.getElementById('model');
+    // var input=model.querySelectorAll('input');
+    window.addEventListener("DOMContentLoaded", contentLoaded, false);
+
+
+    $("#submits").click(function () {
+        const title = $("#title").val();
+        const content = $("#content").val();
+        const tagId = $("input:radio:checked").val();
+        if ( title === "" || content === ""){
+            $("#alert").css("display", "block");
+        } else {
+            $("#alert").alert('close');
+            document.getElementById("publish").submit();
+        }
+    })
+</script>
+</body>
+</html>
