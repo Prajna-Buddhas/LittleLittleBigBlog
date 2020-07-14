@@ -47,33 +47,20 @@
                             管理
                         </a>
                         <div aria-labelledby="navbarDropdown" class="dropdown-menu">
-<<<<<<< HEAD
-                            <a class="dropdown-item" >用户管理</a>
+
+                            <a class="dropdown-item" href="/AdminControl">用户管理</a>
                             <a class="dropdown-item" href="/AdminBlog">博客管理</a>
-=======
-                            <a class="dropdown-item" href="AdminControl.html">用户管理</a>
-                            <a class="dropdown-item" href=AdminBlog.html">博客管理</a>
->>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
 
                         </div>
                     </li>
 
                 </ul>
-<<<<<<< HEAD
                 <img class="rounded-circle "  style="height: 40px;width: 40px">
                 <a class="nav-link navbar-text" href="/personalData" ></a>
             </div>
         </nav>
 
             <div align="center" >
-=======
-                <img class="rounded-circle " th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
-                <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
-            </div>
-        </nav>
-
-            <div align="center">
->>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
                 <table class="table table-sm" style="margin-top: 5rem;max-width: 70rem">
 
                     <thead>
@@ -90,18 +77,13 @@
                     </thead>
                     <tbody>
 
-<<<<<<< HEAD
                     <tr  th:each="user:${users}">
                         <td class="con" scope="row" th:text="${user.userId}">*</td>
-=======
-                    <tr id="adduser">
-                        <td class="con" th:text="${user.userId}">*</td>
->>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
+
                         <td class="con" th:text="${user.username}">*</td>
                         <td class="con" th:text="${user.password}">*</td>
                         <td class="con" th:text="${user.birthday}">*</td>
                         <td class="con" th:text="${user.nickname}">*</td>
-<<<<<<< HEAD
                         <td class="con" th:text="${user.registerDate}">*</td>
                         <td class="con" th:text="${user.email}">*</td>
                         <td class="con" th:text="${user.admin}">*</td>
@@ -112,13 +94,7 @@
                             <button type="submit" class="btn btn-outline-danger" >删除</button>
                         </form>
                         </td>
-=======
-                        <td class="con" th:text="${user.registerData}">*</td>
-                        <td class="con" th:text="${user.email}">*</td>
-                        <td class="con" th:text="${user.admin}">*</td>
-                        <td><a href="ModifyData.html"> <button type="button" class="btn btn-outline-info">修改</button></a></td>
-                        <td><button type="button" class="btn btn-outline-danger" >删除</button></td>
->>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
+
 
                     </tr>
                     </tbody>
@@ -133,15 +109,7 @@
             </div>
         </a>
         <!--发表博客-->
-<<<<<<< HEAD
 
-=======
-        <a href="/publish">
-            <div style="box-shadow: 3px 4px 4px rgba(10,16,20,.24),0 0 8px rgba(10,16,20,.12);text-decoration: none;border-radius: 50%;background: white;width: 3.5rem; height: 3.5rem; bottom: 9rem;right: 9rem; position: fixed; text-align: center">
-                <img src="/img/publish.png" style="width: auto; height: auto; margin-top: 0.2rem">
-            </div>
-        </a>
->>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
     </div>
 
     <!--内容-->

@@ -1,8 +1,6 @@
 package cn.tjpu.microblog.config;
 
-import cn.tjpu.microblog.component.AdminLoginHandleInterception;
 import cn.tjpu.microblog.component.LoginHandleInterception;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -19,12 +17,9 @@ import javax.annotation.Resource;
 
 @Configuration
 public class WebMvcConfigAdapter implements WebMvcConfigurer {
-//
-//    @Resource
-//    LoginHandleInterception loginHandleInterception;
 
-//    @Resource
-//    AdminLoginHandleInterception adminLoginHandleInterception;
+    @Resource
+    LoginHandleInterception loginHandleInterception;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -32,13 +27,13 @@ public class WebMvcConfigAdapter implements WebMvcConfigurer {
         registry.addResourceHandler("/image/blogImg/**").addResourceLocations("file:/E:/Practice/blogImg/");
     }
 
-//    @Override
-//    public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(loginHandleInterception).addPathPatterns("/**")
-//                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(loginHandleInterception).addPathPatterns("/**")
+                .excludePathPatterns("/login","/login.html","/register","/register.html",
+                        "/css/**","/js/**","/img/**","/AdminLogin","/AdminLogin.html",
+                        "/AdminControl","/Modify2/**","/AdminBlog","/deleteuser","/deleteblog","/Modify1/**",
+                        "/ModifyUser","/ModifyBlog");
 
-//        registry.addInterceptor(adminLoginHandleInterception).addPathPatterns("/admin/**")
-//                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
-
-//    }
+    }
 }
