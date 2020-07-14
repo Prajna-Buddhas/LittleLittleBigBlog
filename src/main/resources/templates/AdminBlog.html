@@ -47,15 +47,25 @@
                             管理
                         </a>
                         <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+<<<<<<< HEAD
                             <a class="dropdown-item" href="/AdminControl">用户管理</a>
                             <a class="dropdown-item" >博客管理</a>
+=======
+                            <a class="dropdown-item" href="AdminControl.html">用户管理</a>
+                            <a class="dropdown-item" href="AdminBlog.html">博客管理</a>
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
 
                         </div>
                     </li>
 
                 </ul>
+<<<<<<< HEAD
                 <img class="rounded-circle " style="height: 40px;width: 40px">
                 <a class="nav-link navbar-text" href="/personalData" ></a>
+=======
+                <img class="rounded-circle " th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px">
+                <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
             </div>
         </nav>
 
@@ -97,10 +107,17 @@
             </thead>
             <tbody>
 
+<<<<<<< HEAD
             <tr th:each="blog:${blogs}">
                 <th class="con" scope="row" th:text="${blog.blogId}">*</th>
                 <td class="con" th:text="${blog.title}">*</td>
                 <td class="con" th:text="${blog.content}">*</td>
+=======
+            <tr>
+                <th class="con" scope="row" th:text="${blog.blogId}">*</th>
+                <td class="con" th:text="${blog.title}">*</td>
+                <td class="con" th:text="${blog.concent}">*</td>
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
                 <td class="con" th:text="${blog.authorId}">*</td>
                 <td class="con" th:text="${blog.tagId}">*</td>
                 <td class="con" th:text="${blog.likes}">*</td>
@@ -108,12 +125,17 @@
                 <td class="con" th:text="${blog.releaseDate}">*</td>
                 <td class="con" th:text="${blog.commentCount}">*</td>
                 <td class="con" th:text="${blog.blogPhoto}">*</td>
+<<<<<<< HEAD
                 <td><a th:href="@{/Modify2/}+${blog.blogId}"><button type="button" class="btn btn-outline-info" >修改</button></a></td>
 
                 <td><form method="post" th:action="@{/deleteblog}">
                     <input hidden name="blogId" th:value="${blog.getBlogId()}">
                     <button type="submit" class="btn btn-outline-danger" >删除</button>
                 </form></td>
+=======
+                <td><a href="ModifyBlog.html"> <button type="button" class="btn btn-outline-info">修改</button></a></td>
+                <td><button type="button" class="btn btn-outline-danger" >删除</button></td>
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
 
             </tr>
             </tbody>
