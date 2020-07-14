@@ -27,9 +27,10 @@ public class PersonalDataService {
     HttpSession session;
 
     public void updateData(User user, MultipartFile file) throws IOException {
-
-        String avatarId = FileUtil.saveImg(file,FileUtil.AVATAR);
-        user.setAvatarId(avatarId);
+        if (!"".equals(file.getOriginalFilename()) && file.getOriginalFilename() != null) {
+            String avatarId = FileUtil.saveImg(file, FileUtil.AVATAR);
+            user.setAvatarId(avatarId);
+        }
         personalDataMapper.updateByUserId(user);
         List<User> users = personalDataMapper.getUser(user);
         session.removeAttribute("userInfo");

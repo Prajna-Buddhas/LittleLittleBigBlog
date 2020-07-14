@@ -23,8 +23,8 @@ public class WebMvcConfigAdapter implements WebMvcConfigurer {
     @Resource
     LoginHandleInterception loginHandleInterception;
 
-    @Resource
-    AdminLoginHandleInterception adminLoginHandleInterception;
+//    @Resource
+//    AdminLoginHandleInterception adminLoginHandleInterception;
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
