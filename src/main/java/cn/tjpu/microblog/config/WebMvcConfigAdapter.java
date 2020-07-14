@@ -19,9 +19,9 @@ import javax.annotation.Resource;
 
 @Configuration
 public class WebMvcConfigAdapter implements WebMvcConfigurer {
-
-    @Resource
-    LoginHandleInterception loginHandleInterception;
+//
+//    @Resource
+//    LoginHandleInterception loginHandleInterception;
 
 //    @Resource
 //    AdminLoginHandleInterception adminLoginHandleInterception;
@@ -32,13 +32,13 @@ public class WebMvcConfigAdapter implements WebMvcConfigurer {
         registry.addResourceHandler("/image/blogImg/**").addResourceLocations("file:/E:/Practice/blogImg/");
     }
 
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(loginHandleInterception).addPathPatterns("/**")
-                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
+//    @Override
+//    public void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(loginHandleInterception).addPathPatterns("/**")
+//                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
 
 //        registry.addInterceptor(adminLoginHandleInterception).addPathPatterns("/admin/**")
 //                .excludePathPatterns("/login","/login.html","/register","/register.html","/css/**","/js/**","/img/**","/adminLogin","/adminLogin.html");
 
-    }
+//    }
 }

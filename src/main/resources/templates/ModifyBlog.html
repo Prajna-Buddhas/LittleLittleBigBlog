@@ -28,10 +28,15 @@
                     标签
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
+                    <a class="dropdown-item" href="/AdminControl" >用户管理</a>
+                    <a class="dropdown-item" href="/AdminBlog">博客管理</a>
+=======
                     <a class="dropdown-item" href="/tag/1">美食</a>
                     <a class="dropdown-item" href="/tag/2">电影</a>
                     <a class="dropdown-item" href="/tag/3">游戏</a>
                     <a class="dropdown-item" href="/tag/4">音乐</a>
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
                 </div>
             </li>
             <li class="nav-item">
@@ -41,6 +46,66 @@
                 </form>
             </li>
         </ul>
+<<<<<<< HEAD
+    </div>
+</nav>
+
+<div class="card" style="margin: 2% 10% 10%;padding: 5%">
+    <h1 style="color: rgba(0,20,5,0.68)">修改Blog</h1>
+
+    <form action="/ModifyBlog" enctype="multipart/form-data" method="post" id="publish">
+        <ul class="list-group" style="list-style: none">
+            <li ><div><label>
+                <input id="title" type="text" name="title" class="form-control" th:value="${userInfo2.title}">
+            </label></div></li>
+            <li >
+                <div><label>
+                <textarea id="content" name="content" class="form-control" style="width: 100%;overflow: auto;
+       " cols="70" rows="10" th:text="${userInfo2.content}"></textarea>
+                </label>
+                </div></li><li>
+            <li class="list-group-item">
+                <div>BlogPhoto</div>
+                <div><input th:value="${userInfo2.blogPhoto}" name="avatarId" type="text"></div>
+            </li>
+            选择分区
+        </li>
+            <li><div>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="1" checked> 美食
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="2"> 电影
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="3"> 音乐
+                </label>
+                <label class="checkbox-inline">
+                    <input type="radio" name="tagId"
+                           value="4"> 游戏
+                </label>
+            </div></li>
+            <li>
+
+            <li>
+                <div id="alert" style="display: none" class="alert alert-danger" role="alert">
+                    请填写完所有内容！
+                </div>
+            </li><br>
+            <input hidden th:value="${userInfo2.blogId}" name="blogId">
+            <li><button type="button" id="submits" value="put" name="_method" class="btn btn-info">修改</button></li>
+        </ul>
+    </form>
+</div>
+<script>
+    //图片上传到浏览器并显示
+    function ProcessFile(e) {
+        const reader = new FileReader();
+        const file = document.getElementById('chooseImage0').files[0];
+=======
         <img th:src="@{/image/avatar/}+${session.userInfo.getAvatarId()}" style="height: 40px;width: 40px" class="rounded-circle ">
         <a class="nav-link navbar-text" href="/personalData" >[[${session.userInfo.username}]]</a>
     </div>
@@ -71,17 +136,47 @@
     function ProcessFile(e) {
         const reader = new FileReader();
         const file = document.getElementById('choose_img').files[0];
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
         console.log(file);
         if (file) {
             reader.onload = function (event) {
                 const txt = event.target.result;
+<<<<<<< HEAD
+                $("#cropedBigImg0").attr('src', txt);//将图片base64字符串赋值给img的src
+=======
                 $("#avatarId").attr('src', txt);//将图片base64字符串赋值给img的src
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
                 //console.log(txt)//base64
             };
         }
         reader.readAsDataURL(file);
     }
 
+<<<<<<< HEAD
+
+
+    function contentLoaded() {
+        document.getElementById('chooseImage0').addEventListener('change',
+            ProcessFile, false);
+    }
+
+    // var model=document.getElementById('model');
+    // var input=model.querySelectorAll('input');
+    window.addEventListener("DOMContentLoaded", contentLoaded, false);
+
+
+    $("#submits").click(function () {
+        const title = $("#title").val();
+        const content = $("#content").val();
+        const tagId = $("input:radio:checked").val();
+        if ( title === "" || content === ""){
+            $("#alert").css("display", "block");
+        } else {
+            $("#alert").alert('close');
+            document.getElementById("publish").submit();
+        }
+    })
+=======
     function contentLoaded() {
         document.getElementById('choose_img').addEventListener('change',
             ProcessFile, false);
@@ -89,6 +184,7 @@
 
     window.addEventListener("DOMContentLoaded", contentLoaded, false);
 
+>>>>>>> 3df3009ccff4602ae20eff73cb754ccaf70500b4
 </script>
 </body>
 </html>
