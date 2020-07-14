@@ -34,9 +34,7 @@ public class AdminController {
             modelAndView.addObject("status", status);
             modelAndView.setViewName("AdminLogin");
         } else {
-            modelAndView.setViewName("AdminControl");
-            List<User> users = service.getAllUsers();
-            modelAndView.addObject("users", users);
+           AdminControl(modelAndView);
         }
         return modelAndView;
     }
