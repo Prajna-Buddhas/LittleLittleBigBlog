@@ -38,8 +38,8 @@ public class AdminService {
         if (!dataPassword.equals(user.getPassword())) {
             return "密码错误";
         }
-
-        if (dataUser.getAdmin() != 1) {
+        Integer admin = dataUser.getAdmin();
+        if (admin != 1) {
             return "管理员权限不足";
         }
 
